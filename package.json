@@ -1,7 +1,7 @@
 {
   "name": "typo3-extdev-helper",
   "version": "1.0.3",
-  "description": "composer package to drop CI/CD and QA related stuff into an extension",
+  "description": "composer package to drop CI/CD and QA related stuff into an typo3 extension",
   "repository": {
     "type": "git",
     "url": "git@gitlab.it-objects.de:typo3/extensions/typo3-extdev-helper.git"
@@ -23,5 +23,8 @@
     "version:set": "node -e \"var argv = require('minimist')(process.argv.slice(1)); console.log(argv._);\" | npm --allow-same-version --no-git-tag-version version",
     "version:show": "node -pe \"require('./package.json').version\"",
     "watch": "onchange -i -k -v -e 'composer.json' -e 'ext_emconf.php' -e 'package.json' -e 'package-lock.json' -e './node_modules/**' -e 'phpunit-report.xml' -e './.Build/**' ** -- npm run develop:all"
-  }
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": ""
 }
