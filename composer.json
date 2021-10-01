@@ -22,9 +22,6 @@
   "require-dev": {
     "roave/security-advisories": "dev-latest"
   },
-  "bin": [
-    "typo3-extdev-helper-init"
-  ],
   "config": {
     "sort-packages": true
   },
