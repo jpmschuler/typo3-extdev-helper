@@ -16,8 +16,8 @@
     "payload/.php-cs-fixer.php": ".php-cs-fixer.php",
     "payload/.phpcs.xml": ".phpcs.xml",
     "payload/.phpstan.constants.php": ".phpstan.constants.php",
-    "payload/rector.php": "rector.php",
     "payload/phpstan.neon": "phpstan.neon",
+    "payload/rector.php": "rector.php",
     "payload/typoscript-lint.yml": "typoscript-lint.yml"
   },
   "gitignore": [
