@@ -1,0 +1,21 @@
+git:semanticRelease-to-new-tag:
+  cache:
+    policy: pull
+  rules:
+    - !reference [.rules_onlyrelease, rules]
+  stage: release-to-new-tag
+  retry: 2
+  needs: ["bootstrap:npm-ci","bootstrap:composer-install-dev"]
+  before_script:
+    - eval $(ssh-agent -s); echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null; mkdir -p ~/.ssh; chmod 700 ~/.ssh
+    - echo -e "Host ${CI_SERVER_HOST}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+    - git config gui.encoding utf-8
+    - git remote set-url origin "git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git"
+    - git fetch --all
+    - export GIT_AUTHOR_NAME="${GIT_AUTHOR_NAME-Semantic Release Bot triggered by $GITLAB_USER_NAME}"
+    - export GIT_AUTHOR_EMAIL="$GITLAB_USER_EMAIL"
+    - export GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME-Semantic Release Bot triggered by $GITLAB_USER_NAME}"
+    - export GIT_COMMITTER_EMAIL="$GITLAB_USER_EMAIL"
+  script:
+    - git checkout release
+    - npx semantic-release

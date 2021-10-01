@@ -1,0 +1,27 @@
+{
+  "name": "typo3-extdev-helper",
+  "version": "1.0.3",
+  "description": "composer package to drop CI/CD and QA related stuff into an extension",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.it-objects.de:typo3/extensions/typo3-extdev-helper.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run test",
+    "develop": "trap 'npm run version:revert' SIGINT; npm run watch",
+    "develop:all": "npm run build && npm run version:prerelease && npm run develop:deploy",
+    "develop:deploy": "./.deploy.sh",
+    "postversion:prerelease": "npm run version:copy",
+    "postversion:set": "npm run version:copy",
+    "test": "composer run test",
+    "version:copy": "npm run version:copy:package.json:ext_emconf.php && npm run version:copy:package.json:composer.json ",
+    "version:copy:package.json:composer.json": "node -e \"var fs = require('fs');var file = require('./composer.json'); file.version= 'v'+ require('./package.json').version; fs.writeFile('./composer.json',JSON.stringify(file),function (err) {});\" && composer normalize --no-check-lock --no-update-lock",
+    "version:copy:package.json:ext_emconf.php": "node -e \"var fs = require('fs');var contents = fs.readFileSync('ext_emconf.php', 'utf8');contents=contents.replace(/'version' => '[^']+',/g,'\\'version\\' => \\''+require('./package.json').version+'\\',');fs.writeFile('./ext_emconf.php',contents,function (err) {});\"",
+    "version:prerelease": "npm --no-git-tag-version version prerelease --preid=alpha",
+    "version:revert": "npm --no-git-tag-version version prerelease --preid=reset; npm --no-git-tag-version version prerelease --preid=alpha; npm run version:copy",
+    "version:set": "node -e \"var argv = require('minimist')(process.argv.slice(1)); console.log(argv._);\" | npm --allow-same-version --no-git-tag-version version",
+    "version:show": "node -pe \"require('./package.json').version\"",
+    "watch": "onchange -i -k -v -e 'composer.json' -e 'ext_emconf.php' -e 'package.json' -e 'package-lock.json' -e './node_modules/**' -e 'phpunit-report.xml' -e './.Build/**' ** -- npm run develop:all"
+  }
+}

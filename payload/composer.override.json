@@ -1,0 +1,66 @@
+{
+	"config": {
+		"bin-dir": ".Build/bin",
+		"sort-packages": true,
+		"vendor-dir": ".Build/vendor"
+	},
+	"extra": {
+		"typo3/cms": {
+			"app-dir": ".Build",
+			"web-dir": ".Build/public"
+		}
+	},
+	"scripts": {
+		"codequality": [
+			"@lint:all",
+			"@rector:dry-run",
+			"@test:deprecations"
+		],
+		"codequality:autofix": [
+			"@lint:php-cs-fixer",
+			"@lint:phpcbf",
+			"@rector"
+		],
+		"lint:all": [
+			"@lint:php",
+			"@lint:php-cs-fixer:dry-run",
+			"@lint:phpcs:dry-run",
+			"@lint:phpstan"
+		],
+		"lint:php": "find *.php Classes Configuration Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
+		"lint:php-cs-fixer": "php-cs-fixer fix",
+		"lint:php-cs-fixer:dry-run": "php-cs-fixer fix --dry-run --using-cache=no --diff",
+		"lint:phpcs": "@lint:phpcbf",
+		"lint:phpcs:dry-run": "phpcs Classes Configuration Tests",
+		"lint:phpcbf": "phpcbf Classes Configuration Tests",
+		"lint:phpstan": "phpstan --memory-limit=1G analyse",
+		"lint:typoscript": "typoscript-lint",
+		"pretest:deprecations": [
+			"mkdir -p .Build/$(composer config extra.typo3/cms.extension-key)",
+			"rsync -ah --delete --exclude=node_modules --exclude=.* . .Build/$(composer config extra.typo3/cms.extension-key)"
+		],
+		"rector": "rector process .",
+		"rector:dry-run": "rector process . --dry-run",
+		"test": [
+			"@lint:php-cs-fixer",
+			"@test:unit"
+		],
+		"test:deprecations": [
+			"@pretest:deprecations",
+			"typo3scan scan --target 9 -- .Build/$(composer config extra.typo3/cms.extension-key) "
+		],
+		"test:deprecations:8LTS:ci": [
+			"@pretest:deprecations",
+			"typo3scan scan --target 8 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > $(composer config extra.typo3/cms.extension-key)-deprecations-8LTS.xml"
+		],
+		"test:deprecations:9LTS:ci": [
+			"@pretest:deprecations",
+			"typo3scan scan --target 9 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > $(composer config extra.typo3/cms.extension-key)-deprecations-9LTS.xml"
+		],
+		"test:deprecations:ci": [
+			"@test:deprecations:8:ci",
+			"@test:deprecations:9:ci"
+		],
+		"test:unit": "phpunit -c $(composer config vendor-dir)/nimut/testing-framework/res/Configuration/UnitTests.xml --log-junit phpunit-report.xml Tests/Unit"
+	}
+}

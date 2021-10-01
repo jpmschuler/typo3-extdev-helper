@@ -1,0 +1,48 @@
+lint:php:7.2:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: []
+  image: thecodingmachine/php:7.2-v4-cli-node14
+  stage: lint
+  script:
+    - composer run lint:php
+
+lint:php:7.4:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: []
+  image: thecodingmachine/php:7.4-v4-cli-node14
+  stage: lint
+  script:
+    - composer run lint:php
+
+lint:php-cs-fixer:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  stage: lint
+  needs: ["bootstrap:composer-install-dev"]
+  script:
+    - composer run lint:php-cs-fixer:dry-run
+
+lint:phpcs:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  stage: lint
+  allow_failure: true
+  needs: ["bootstrap:composer-install-dev"]
+  script:
+    - composer run lint:phpcs:dry-run
+
+lint:phpstan:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: ["bootstrap:composer-install-dev"]
+  stage: lint
+  allow_failure: true
+  script:
+    - composer run lint:phpstan
