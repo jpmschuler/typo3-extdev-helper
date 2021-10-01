@@ -3,7 +3,7 @@ test:preBuild:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
-  needs: ["bootstrap:npm-ci","bootstrap:composer-install-dev","test:lint:php:7.2","test:lint:php:7.4","test:php-cs-fixer"]
+  needs: ["bootstrap:npm-ci","bootstrap:composer-install-dev","lint:php:7.2","lint:php:7.4","lint:php-cs-fixer"]
   script:
     - composer run test
   artifacts:
