@@ -26,9 +26,7 @@
     "typo3-extdev-helper-init"
   ],
   "config": {
-    "bin-dir": ".Build/bin",
-    "sort-packages": true,
-    "vendor-dir": ".Build/vendor"
+    "sort-packages": true
   },
   "extra": {
     "typo3/cms": {
