@@ -19,5 +19,5 @@ It is focussed on gitlab and requires some env vars set.
 Installation:
 ```sh
 composer req jpmschuler/typo3-extdev-helper:*@dev
-$(composer config bin-dir)/typo3-extdev-helper-init
+$(composer config vendor-dir)/jpmschuler/typo3-extdev-helper/typo3-extdev-helper-init
 ```
