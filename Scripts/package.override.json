@@ -2,9 +2,9 @@
 	"devDependencies": {
 		"concurrently": "^6.2.2",
 		"conventional-changelog-typo3": "^1.2.0",
-		"jsonlint-cli": "^1.0.1",
+		"jsonlint-cli": null,
 		"onchange": "^7.1.0",
-		"phplint": "^2.0.5",
+		"phplint": null,
 		"semanticrelease-typo3ext-config": "^2.0.0",
 		"semver": "^7.3.5",
 		"@semantic-release/exec": null,

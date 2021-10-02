@@ -21,7 +21,7 @@ git:merge-release-with-develop:
     - git checkout develop
     - git merge --strategy-option=theirs release
     - npm run version:prerelease
+    - CURRENTVERSION=$(node -pe "require('./package.json').version")
     - git add .
-    - >
-      git commit -m "[TASK] Set version of ${CI_PROJECT_NAME} to $(jq -r '.version' package.json)"
+    - git commit -m "[TASK] Set version of ${CI_PROJECT_NAME} to $(CURRENTVERSION)"
     - git push --all
