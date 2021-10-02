@@ -1,6 +1,6 @@
 {
   "name": "typo3-extdev-helper",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "composer package to drop CI/CD and QA related stuff into an typo3 extension",
   "repository": {
     "type": "git",
