@@ -1,7 +1,7 @@
 bootstrap:composer-install-dev:
   stage: bootstrap
   rules:
-    - !reference [.rules_default, rules]
+    - !reference [.rules_defaultandrelease, rules]
   cache:
     key: composer-cache
     paths:

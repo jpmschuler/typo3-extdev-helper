@@ -1,7 +1,7 @@
 bootstrap:npm-ci:
   stage: bootstrap
   rules:
-    - !reference [.rules_default, rules]
+    - !reference [.rules_defaultandrelease, rules]
   cache:
     key: npm-cache
     paths:
