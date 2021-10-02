@@ -35,7 +35,7 @@ declare(strict_types=1);
         if (!is_array($extensionComposer)) {
             throw new \Exception('error parsing ' . $extensionComposerPath, 1633043705);
         }
-        $overrideComposerPath = __DIR__ . '/../payload/' . $jsonName . '.override.json';
+        $overrideComposerPath = __DIR__ . '/' . $jsonName . '.override.json';
         $overrideComposer = json_decode(file_get_contents($overrideComposerPath), true);
         if (!is_array($overrideComposer)) {
             throw new \Exception('error parsing ' . $overrideComposerPath, 1633043715);
