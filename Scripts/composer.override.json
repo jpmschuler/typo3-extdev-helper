@@ -61,6 +61,9 @@
 			"@test:deprecations:8:ci",
 			"@test:deprecations:9:ci"
 		],
-		"test:unit": "phpunit -c $(composer config vendor-dir)/nimut/testing-framework/res/Configuration/UnitTests.xml --log-junit phpunit-report.xml Tests/Unit"
+		"test:unit": "phpunit -c $(composer config vendor-dir)/nimut/testing-framework/res/Configuration/UnitTests.xml --log-junit phpunit-report.xml Tests/Unit",
+		"typo3-extdev-helper-init": [
+			"@php .Build/vendor/jpmschuler/typo3-extdev-helper/Scripts/Init.php"
+		]
 	}
 }
