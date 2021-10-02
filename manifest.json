@@ -22,15 +22,13 @@
   },
   "gitignore": [
     "/.editorconfig",
-    "/phive.xml",
-    "/phpcs.xml",
+    "/.php_cs.php",
+    "/.php-cs-fixer.php",
+    "/.php-cs-fixer.cache",
     "/.phpcs.xml",
     "/.phpstan.constants.php",
     "/phpstan.neon",
     "/rector.php",
     "/typoscript-lint.yml",
-    "/.php_cs.php",
-    "/.php-cs-fixer.php",
-    "/.php_cs.cache"
   ]
 }
