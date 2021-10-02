@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f552c6f0cdd26c86841ffc4f1e54f87",
+    "content-hash": "dd8dde70dcd7131e18a915e3514e5aff",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -61,16 +61,16 @@
         },
         {
             "name": "bk2k/configuration-installer",
-            "version": "dev-master",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benjaminkott/configuration-installer.git",
-                "reference": "5ff80ac96f8efa6d652cf936ba2000823a12c559"
+                "reference": "8b1d2601cb7b3ec8a705cf0977761ba66e6da3a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benjaminkott/configuration-installer/zipball/5ff80ac96f8efa6d652cf936ba2000823a12c559",
-                "reference": "5ff80ac96f8efa6d652cf936ba2000823a12c559",
+                "url": "https://api.github.com/repos/benjaminkott/configuration-installer/zipball/8b1d2601cb7b3ec8a705cf0977761ba66e6da3a3",
+                "reference": "8b1d2601cb7b3ec8a705cf0977761ba66e6da3a3",
                 "shasum": ""
             },
             "require": {
@@ -83,7 +83,6 @@
                 "overtrue/phplint": "^2.0",
                 "phpunit/phpunit": "^9.2"
             },
-            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "BK2K\\ConfigurationInstaller\\Installer\\Plugin"
@@ -109,9 +108,9 @@
             "homepage": "https://github.com/benjaminkott/configuration-installer",
             "support": {
                 "issues": "https://github.com/benjaminkott/configuration-installer/issues",
-                "source": "https://github.com/benjaminkott/configuration-installer/tree/master"
+                "source": "https://github.com/benjaminkott/configuration-installer/tree/0.1.1"
             },
-            "time": "2020-07-31T07:25:16+00:00"
+            "time": "2020-07-30T20:45:37+00:00"
         },
         {
             "name": "camspiers/json-pretty",
@@ -8681,7 +8680,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "bk2k/configuration-installer": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

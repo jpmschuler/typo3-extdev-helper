@@ -12,6 +12,7 @@
 	},
 	"scripts": {
 		"codequality": [
+			"@lint:php-cs-fixer",
 			"@lint:all",
 			"@rector:dry-run",
 			"@test:deprecations"
