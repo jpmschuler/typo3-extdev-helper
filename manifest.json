@@ -29,6 +29,6 @@
     "/.phpstan.constants.php",
     "/phpstan.neon",
     "/rector.php",
-    "/typoscript-lint.yml",
+    "/typoscript-lint.yml"
   ]
 }
