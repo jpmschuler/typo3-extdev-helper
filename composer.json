@@ -44,6 +44,6 @@
       "npm version patch -m '[RELEASE] releasing v%s'",
       "@release:publish"
     ],
-    "release:publish": "git push --follow-tags"
+    "release:publish": "git push --follow-tags ito; git push --follow-tags ude"
   }
 }
