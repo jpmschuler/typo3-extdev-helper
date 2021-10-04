@@ -1,0 +1,52 @@
+deprecations:9LTS:
+  cache: {}
+  image: jpmschuler/docker-node-php:v8.0.0
+  rules:
+    - !reference [.rules_default, rules]
+  needs: ["bootstrap:composer-install-dev"]
+  stage: lint
+  allow_failure: true
+  script:
+    - composer run test:deprecations:9LTS:ci
+  artifacts:
+    reports:
+      junit: "*deprecations*.xml"
+
+deprecations:10LTS:
+  cache: {}
+  image: jpmschuler/docker-node-php:v8.0.0
+  rules:
+    - !reference [.rules_default, rules]
+  needs: ["bootstrap:composer-install-dev"]
+  stage: lint
+  allow_failure: true
+  script:
+    - composer run test:deprecations:10LTS:ci
+  artifacts:
+    reports:
+      junit: "*deprecations*.xml"
+
+deprecations:11LTS:
+  cache: {}
+  image: jpmschuler/docker-node-php:v8.0.0
+  rules:
+    - !reference [.rules_default, rules]
+  needs: ["bootstrap:composer-install-dev"]
+  stage: lint
+  allow_failure: true
+  script:
+    - composer run test:deprecations:11LTS:ci
+  artifacts:
+    reports:
+      junit: "*deprecations*.xml"
+
+deprecations:rector:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: ["bootstrap:composer-install-dev"]
+  stage: lint
+  allow_failure: true
+  script:
+    - composer run rector:dry-run
+
