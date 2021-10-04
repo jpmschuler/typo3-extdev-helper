@@ -19,6 +19,7 @@ bootstrap:composer-install-dev:
       - .Build/
       - .php-cs-fixer.php
       - .phpcs.xml
+      - .phpstan.constants.php
       - phpstan.neon
       - rector.php
       - typoscript-lint.yml
