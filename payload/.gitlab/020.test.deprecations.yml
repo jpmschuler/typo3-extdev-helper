@@ -4,7 +4,7 @@ deprecations:9LTS:
   rules:
     - !reference [.rules_default, rules]
   needs: ["bootstrap:composer-install-dev"]
-  stage: lint
+  stage: deprecations
   allow_failure: true
   script:
     - composer run test:deprecations:9LTS:ci
@@ -18,24 +18,10 @@ deprecations:10LTS:
   rules:
     - !reference [.rules_default, rules]
   needs: ["bootstrap:composer-install-dev"]
-  stage: lint
+  stage: deprecations
   allow_failure: true
   script:
     - composer run test:deprecations:10LTS:ci
-  artifacts:
-    reports:
-      junit: "*deprecations*.xml"
-
-deprecations:11LTS:
-  cache: {}
-  image: jpmschuler/docker-node-php:v8.0.0
-  rules:
-    - !reference [.rules_default, rules]
-  needs: ["bootstrap:composer-install-dev"]
-  stage: lint
-  allow_failure: true
-  script:
-    - composer run test:deprecations:11LTS:ci
   artifacts:
     reports:
       junit: "*deprecations*.xml"
@@ -45,7 +31,7 @@ deprecations:rector:
   rules:
     - !reference [.rules_default, rules]
   needs: ["bootstrap:composer-install-dev"]
-  stage: lint
+  stage: deprecations
   allow_failure: true
   script:
     - composer run rector:dry-run

@@ -80,14 +80,9 @@
       "@pretest:deprecations",
       "typo3scan scan --target 10 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > $(composer config extra.typo3/cms.extension-key)-deprecations-10LTS.xml"
     ],
-    "test:deprecations:11LTS:ci": [
-      "@pretest:deprecations",
-      "typo3scan scan --target 11 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > $(composer config extra.typo3/cms.extension-key)-deprecations-11LTS.xml"
-    ],
     "test:deprecations:ci": [
       "@test:deprecations:9LTS:ci",
-      "@test:deprecations:10LTS:ci",
-      "@test:deprecations:11LTS:ci"
+      "@test:deprecations:10LTS:ci"
     ],
     "test:unit": "phpunit -c $(composer config vendor-dir)/nimut/testing-framework/res/Configuration/UnitTests.xml --log-junit phpunit-report.xml Tests/Unit",
     "typo3-extdev-helper-init": [
