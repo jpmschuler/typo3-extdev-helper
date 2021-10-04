@@ -4,6 +4,7 @@
     "payload/.gitlab/005.bootstrap.composer.install.dev.yml": ".gitlab/005.bootstrap.composer.install.dev.yml",
     "payload/.gitlab/006.bootstrap.npm.ci.yml": ".gitlab/006.bootstrap.npm.ci.yml",
     "payload/.gitlab/010.test.lint.yml": ".gitlab/010.test.lint.yml",
+    "payload/.gitlab/020.test.deprecations.yml": ".gitlab/020.test.deprecations.yml",
     "payload/.gitlab/040.test.prebuild.yml": ".gitlab/040.test.prebuild.yml",
     "payload/.gitlab/100.merge-develop-in-release.yml": ".gitlab/100.merge-develop-in-release.yml",
     "payload/.gitlab/200.semanticRelease-to-new-tag.yml": ".gitlab/200.semanticRelease-to-new-tag.yml",
