@@ -55,6 +55,10 @@ default:
   rules:
     - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
 
+.rules_onlyversiontagandslack:
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/ && $SLACK_HOOK'
+
 include:
   - '/.gitlab/005.bootstrap.composer.install.dev.yml'
   - '/.gitlab/006.bootstrap.npm.ci.yml'
@@ -66,3 +70,4 @@ include:
   - '/.gitlab/500.merge-release-with-develop.yml'
   - '/.gitlab/800.publishToGitlabRegistry.yml'
   - '/.gitlab/900.publishToSatis.yml'
+  - '/.gitlab/950.slackNotice.yml'

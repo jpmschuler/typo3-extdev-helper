@@ -1,0 +1,11 @@
+updatePkgMgm:publishOnSatis:
+  image: curlimages/curl:latest
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  cache: {}
+  rules:
+    - !reference [.rules_onlyversiontagandslack, rules]
+  before_script: []
+  script:
+    - .gitlab/slackNoticeNewTag.sh
