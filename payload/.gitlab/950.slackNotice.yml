@@ -1,4 +1,4 @@
-updatePkgMgm:publishOnSatis:
+deploy:sendSlackNotice:
   image: curlimages/curl:latest
   stage: deploy
   variables:

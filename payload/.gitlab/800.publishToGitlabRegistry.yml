@@ -1,4 +1,4 @@
-publishToGitlabRegistry:
+deploy:publishToGitlabRegistry:
   image: curlimages/curl:latest
   stage: deploy
   rules:
