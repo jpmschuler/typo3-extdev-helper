@@ -1,14 +1,18 @@
 updatePkgMgm:publishOnSatis:
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
   image: curlimages/curl:latest
   stage: deploy
   variables:
     GIT_STRATEGY: none
-  cache: {}
-  before_script: []
+  cache: { }
+  before_script: [ ]
   script:
     - curl --request POST --form "token=$SATIS_JOB_TOKEN" --form variables[CI_JOB_TOKEN]=$CI_JOB_TOKEN --form ref=main $SATIS_JOB_URL
 
 publishToGitlabRegistry:
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
   image: curlimages/curl:latest
   stage: deploy
   variables:
