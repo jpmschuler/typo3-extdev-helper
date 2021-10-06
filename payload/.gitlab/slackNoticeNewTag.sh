@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/sh
 
 lastCommit="$(git log -1 --pretty=%B)"
 message="payload={

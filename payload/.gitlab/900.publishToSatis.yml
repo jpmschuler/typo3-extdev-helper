@@ -1,5 +1,5 @@
 deploy:publishOnSatis:
-  image: curlimages/curl:latest
+  image: jpmschuler/docker-curl:1.0.2
   stage: deploy
   variables:
     GIT_STRATEGY: none
