@@ -12,7 +12,7 @@
     "payload/.gitlab/800.publishToGitlabRegistry.yml": ".gitlab/800.publishToGitlabRegistry.yml",
     "payload/.gitlab/900.publishToSatis.yml": ".gitlab/900.publishToSatis.yml",
     "payload/.gitlab/950.slackNotice.yml": ".gitlab/950.slackNotice.yml",
-    "payload/.gitlab/slackNoticeNewTag.sh": ".gitlab/.slackNoticeNewTag.sh",
+    "payload/.gitlab/slackNoticeNewTag.sh": ".gitlab/slackNoticeNewTag.sh",
     "payload/.editorconfig": ".editorconfig",
     "payload/.gitattributes-dist": ".gitattributes",
     "payload/.gitlab-ci.yml": ".gitlab-ci.yml",
