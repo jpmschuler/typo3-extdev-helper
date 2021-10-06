@@ -5,7 +5,7 @@ updatePkgMgm:publishOnSatis:
     GIT_STRATEGY: none
   cache: {}
   rules:
-    - !reference [.rules_onlyversiontag, rules]
+    - !reference [.rules_onlyversiontagandsatis, rules]
   before_script: []
   script:
     - curl --request POST --form "token=$SATIS_JOB_TOKEN" --form variables[CI_JOB_TOKEN]=$CI_JOB_TOKEN --form ref=main $SATIS_JOB_URL

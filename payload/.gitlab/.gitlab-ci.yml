@@ -59,6 +59,10 @@ default:
   rules:
     - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/ && $SLACK_HOOK'
 
+.rules_onlyversiontagandsatis:
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/ && $SATIS_JOB_URL'
+
 include:
   - '/.gitlab/005.bootstrap.composer.install.dev.yml'
   - '/.gitlab/006.bootstrap.npm.ci.yml'
