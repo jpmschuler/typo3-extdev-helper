@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd8dde70dcd7131e18a915e3514e5aff",
+    "content-hash": "0cd5548d76c8d78724c45f92de2ef694",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3721,6 +3721,71 @@
                 }
             ],
             "time": "2021-09-28T19:06:03+00:00"
+        },
+        {
+            "name": "saschaegerer/phpstan-typo3",
+            "version": "0.13.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sascha-egerer/phpstan-typo3.git",
+                "reference": "acad4ae943133846db13acd27850431bc4c49e90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/acad4ae943133846db13acd27850431bc4c49e90",
+                "reference": "acad4ae943133846db13acd27850431bc4c49e90",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0",
+                "phpstan/phpstan": "^0.12",
+                "typo3/cms-core": "^8.7 || ^9.5 || ^10.4 || 11.*.*@dev",
+                "typo3/cms-extbase": "^8.7 || ^9.5 || ^10.4 || 11.*.*@dev"
+            },
+            "require-dev": {
+                "consistence-community/coding-standard": "^3.8",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "phing/phing": "^2.16.4",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpstan/phpstan": "^0.12.37",
+                "phpstan/phpstan-strict-rules": "^0.12"
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.12-dev"
+                },
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SaschaEgerer\\PhpstanTypo3\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "TYPO3 CMS class reflection extension for PHPStan",
+            "support": {
+                "issues": "https://github.com/sascha-egerer/phpstan-typo3/issues",
+                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/0.13.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sascha-egerer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://liberapay.com/sascha.egerer",
+                    "type": "liberapay"
+                }
+            ],
+            "time": "2021-05-15T14:41:39+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
