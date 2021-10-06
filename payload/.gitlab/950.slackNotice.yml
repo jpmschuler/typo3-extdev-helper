@@ -1,5 +1,5 @@
 deploy:sendSlackNotice:
-  image: jpmschuler/docker-curl:1.0.2
+  image: jpmschuler/docker-node-php:v8.0.0
   stage: deploy
   variables:
     GIT_STRATEGY: none
