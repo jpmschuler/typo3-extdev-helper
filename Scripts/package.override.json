@@ -21,7 +21,7 @@
 		"develop:deploy": "../typo3-wiwi_uni-due_de/deployment/extensionDeploy.sh",
 		"postversion:prerelease": "npm run version:copy",
 		"postversion:set": "npm run version:copy",
-		"test": "composer run php-cs-fixer && composer run test",
+		"test": "composer run lint:php-cs-fixer && composer run test",
 		"version:copy": "npm run version:copy:package.json:ext_emconf.php && npm run version:copy:package.json:composer.json ",
 		"version:copy:package.json:composer.json": "CURRENTVERSION=$(node -pe \"require('./package.json').version\") && composer config version v$CURRENTVERSION",
 		"version:copy:package.json:ext_emconf.php": "node -e \"var fs = require('fs');var contents = fs.readFileSync('ext_emconf.php', 'utf8');contents=contents.replace(/'version' => '[^']+',/g,'\\'version\\' => \\''+require('./package.json').version+'\\',');fs.writeFile('./ext_emconf.php',contents,function (err) {});\"",
