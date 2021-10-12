@@ -57,14 +57,15 @@
     "lint:phpcs:dry-run": "phpcs Classes Configuration Tests",
     "lint:phpcbf": "phpcbf Classes Configuration Tests",
     "lint:phpstan": "phpstan --memory-limit=1G analyse",
-    "lint:phpstan:ci": "phpstan analyse --memory-limit=1G --no-progress --error-format gitlab > phpstan.json",
+    "lint:phpstan:ci": "phpstan analyse --memory-limit=1G --no-progress --error-format gitlab > report.phpstan.json",
     "lint:typoscript": "typoscript-lint",
     "pretest:deprecations": [
       "mkdir -p .Build/$(composer config extra.typo3/cms.extension-key)",
       "rsync -ah --delete --exclude=node_modules --exclude=.* . .Build/$(composer config extra.typo3/cms.extension-key)"
     ],
     "rector": "rector process .",
-    "rector:dry-run": "rector process . --dry-run",
+    "rector:dry-run": "rector process --dry-run --  .",
+    "rector:dry-run:ci": "rector process --dry-run --output-format json -- . > report.rector.json",
     "test": [
       "@lint:php-cs-fixer",
       "@test:unit"
@@ -75,17 +76,17 @@
     ],
     "test:deprecations:9LTS:ci": [
       "@pretest:deprecations",
-      "typo3scan scan --target 9 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > $(composer config extra.typo3/cms.extension-key)-deprecations-9LTS.xml"
+      "typo3scan scan --target 9 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > report.$(composer config extra.typo3/cms.extension-key)-deprecations-9LTS.xml"
     ],
     "test:deprecations:10LTS:ci": [
       "@pretest:deprecations",
-      "typo3scan scan --target 10 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > $(composer config extra.typo3/cms.extension-key)-deprecations-10LTS.xml"
+      "typo3scan scan --target 10 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > report.$(composer config extra.typo3/cms.extension-key)-deprecations-10LTS.xml"
     ],
     "test:deprecations:ci": [
       "@test:deprecations:9LTS:ci",
       "@test:deprecations:10LTS:ci"
     ],
-    "test:unit": "phpunit -c $(composer config vendor-dir)/nimut/testing-framework/res/Configuration/UnitTests.xml --log-junit phpunit-report.xml Tests/Unit",
+    "test:unit": "phpunit -c $(composer config vendor-dir)/nimut/testing-framework/res/Configuration/UnitTests.xml --log-junit report.phpunit.xml Tests/Unit",
     "typo3-extdev-helper-init": [
       "@php .Build/vendor/jpmschuler/typo3-extdev-helper/Scripts/Init.php"
     ]

@@ -10,7 +10,7 @@ deprecations:9LTS:
     - composer run test:deprecations:9LTS:ci
   artifacts:
     reports:
-      junit: "*deprecations*.xml"
+      junit: "report.*"
 
 deprecations:10LTS:
   cache: {}
@@ -24,7 +24,7 @@ deprecations:10LTS:
     - composer run test:deprecations:10LTS:ci
   artifacts:
     reports:
-      junit: "*deprecations*.xml"
+      junit: "report.*"
 
 deprecations:rector:
   cache: {}
@@ -34,5 +34,8 @@ deprecations:rector:
   stage: deprecations
   allow_failure: true
   script:
-    - composer run rector:dry-run
+    - composer run rector:dry-run:ci
+  artifacts:
+    reports:
+      junit: "report.*"
 

@@ -49,4 +49,4 @@ lint:phpstan:
   artifacts:
     when: always
     reports:
-      codequality: phpstan.json
+      codequality: "report.*"
