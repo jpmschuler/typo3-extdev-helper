@@ -45,4 +45,8 @@ lint:phpstan:
   stage: lint
   allow_failure: true
   script:
-    - composer run lint:phpstan
+    - composer run lint:phpstan:ci
+  artifacts:
+    when: always
+    reports:
+      codequality: phpstan.json

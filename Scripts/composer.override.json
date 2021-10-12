@@ -57,6 +57,7 @@
     "lint:phpcs:dry-run": "phpcs Classes Configuration Tests",
     "lint:phpcbf": "phpcbf Classes Configuration Tests",
     "lint:phpstan": "phpstan --memory-limit=1G analyse",
+    "lint:phpstan:ci": "phpstan analyse --memory-limit=1G --no-progress --error-format gitlab > phpstan.json",
     "lint:typoscript": "typoscript-lint",
     "pretest:deprecations": [
       "mkdir -p .Build/$(composer config extra.typo3/cms.extension-key)",
