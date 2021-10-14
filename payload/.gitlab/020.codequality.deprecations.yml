@@ -38,4 +38,3 @@ deprecations:rector:
   artifacts:
     reports:
       junit: "report.*"
-
