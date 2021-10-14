@@ -4,7 +4,7 @@ lint:php:7.2:
     - !reference [.rules_default, rules]
   needs: []
   image: thecodingmachine/php:7.2-v4-cli-node14
-  stage: lint
+  stage: codequality
   script:
     - composer run lint:php
 
@@ -14,7 +14,7 @@ lint:php:7.4:
     - !reference [.rules_default, rules]
   needs: []
   image: thecodingmachine/php:7.4-v4-cli-node14
-  stage: lint
+  stage: codequality
   script:
     - composer run lint:php
 
@@ -22,7 +22,7 @@ lint:php-cs-fixer:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
-  stage: lint
+  stage: codequality
   needs: ["bootstrap:composer-install-dev"]
   script:
     - composer run lint:php-cs-fixer:dry-run
@@ -31,18 +31,22 @@ lint:phpcs:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
-  stage: lint
+  stage: codequality
   allow_failure: true
   needs: ["bootstrap:composer-install-dev"]
   script:
-    - composer run lint:phpcs:dry-run
+    - composer run lint:phpcs:dry-run:ci
+  artifacts:
+    when: always
+    reports:
+      codequality: "report.*"
 
 lint:phpstan:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
   needs: ["bootstrap:composer-install-dev"]
-  stage: lint
+  stage: codequality
   allow_failure: true
   script:
     - composer run lint:phpstan:ci

@@ -4,7 +4,7 @@ deprecations:9LTS:
   rules:
     - !reference [.rules_default, rules]
   needs: ["bootstrap:composer-install-dev"]
-  stage: deprecations
+  stage: codequality
   allow_failure: true
   script:
     - composer run test:deprecations:9LTS:ci
@@ -18,7 +18,7 @@ deprecations:10LTS:
   rules:
     - !reference [.rules_default, rules]
   needs: ["bootstrap:composer-install-dev"]
-  stage: deprecations
+  stage: codequality
   allow_failure: true
   script:
     - composer run test:deprecations:10LTS:ci
@@ -31,7 +31,7 @@ deprecations:rector:
   rules:
     - !reference [.rules_default, rules]
   needs: ["bootstrap:composer-install-dev"]
-  stage: deprecations
+  stage: codequality
   allow_failure: true
   script:
     - composer run rector:dry-run:ci

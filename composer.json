@@ -15,6 +15,7 @@
     "friendsofphp/php-cs-fixer": "^v3.1.0",
     "helmich/typo3-typoscript-lint": "^2.5",
     "michielroos/typo3scan": "*",
+    "micheh/phpcs-gitlab": "^1.1.0",
     "nimut/testing-framework": "^5.1",
     "rector/rector": "^0.11.52",
     "saschaegerer/phpstan-typo3": "^0.13.3",
