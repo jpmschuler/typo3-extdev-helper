@@ -1,7 +1,6 @@
 stages:
   - bootstrap
-  - lint
-  - deprecations
+  - codequality
   - testPreBuild
   - test
   - build
