@@ -66,8 +66,8 @@ default:
 include:
   - '/.gitlab/005.bootstrap.composer.install.dev.yml'
   - '/.gitlab/006.bootstrap.npm.ci.yml'
-  - '/.gitlab/010.test.lint.yml'
-  - '/.gitlab/020.test.deprecations.yml'
+  - '/.gitlab/010.codequality.lint.yml'
+  - '/.gitlab/020.codequality.deprecations.yml'
   - '/.gitlab/040.test.prebuild.yml'
   - '/.gitlab/100.merge-develop-in-release.yml'
   - '/.gitlab/200.semanticRelease-to-new-tag.yml'
