@@ -16,7 +16,7 @@
     "helmich/typo3-typoscript-lint": "^2.5",
     "michielroos/typo3scan": "*",
     "micheh/phpcs-gitlab": "^1.1.0",
-    "nimut/testing-framework": "^5.1",
+    "nimut/testing-framework": "^6",
     "rector/rector": "^0.11.52",
     "saschaegerer/phpstan-typo3": "^0.13.3",
     "squizlabs/php_codesniffer": "^3.6"
