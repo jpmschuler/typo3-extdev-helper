@@ -10,6 +10,7 @@
   ],
   "require": {
     "bk2k/configuration-installer": "0.1.1",
+    "camspiers/json-pretty": "^1.0",
     "ergebnis/composer-normalize": "^2.15",
     "friendsofphp/php-cs-fixer": "^v3.1.0",
     "helmich/typo3-typoscript-lint": "^2.5",

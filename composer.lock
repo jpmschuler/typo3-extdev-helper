@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f118bd520b447e8041d3d61b49a3b5eb",
+    "content-hash": "d51c282b0a49d0cb28d08652bdbdcc68",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -111,6 +111,46 @@
                 "source": "https://github.com/benjaminkott/configuration-installer/tree/0.1.1"
             },
             "time": "2020-07-30T20:45:37+00:00"
+        },
+        {
+            "name": "camspiers/json-pretty",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/camspiers/json-pretty.git",
+                "reference": "17be37cb83af8014658da48fa0012604179039a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/camspiers/json-pretty/zipball/17be37cb83af8014658da48fa0012604179039a7",
+                "reference": "17be37cb83af8014658da48fa0012604179039a7",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Camspiers": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cam Spiers",
+                    "email": "cameron@heyday.co.nz"
+                }
+            ],
+            "description": "Provides support for json pretty printing",
+            "support": {
+                "issues": "https://github.com/camspiers/json-pretty/issues",
+                "source": "https://github.com/camspiers/json-pretty/tree/master"
+            },
+            "time": "2016-02-06T01:25:58+00:00"
         },
         {
             "name": "christian-riesen/base32",
