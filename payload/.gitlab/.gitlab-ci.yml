@@ -54,10 +54,6 @@ default:
   rules:
     - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
 
-.rules_onlyversiontagandslack:
-  rules:
-    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/ && $SLACK_HOOK'
-
 .rules_onlyversiontagandsatis:
   rules:
     - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/ && $SATIS_JOB_URL'
@@ -73,4 +69,3 @@ include:
   - '/.gitlab/500.merge-release-with-develop.yml'
   - '/.gitlab/800.publishToGitlabRegistry.yml'
   - '/.gitlab/900.publishToSatis.yml'
-  - '/.gitlab/950.slackNotice.yml'
