@@ -33,6 +33,7 @@
     "/.phpstan.constants.php",
     "/phpstan.neon",
     "/rector.php",
+    "/rector.*.php",
     "/typoscript-lint.yml",
     "/report.*"
   ]
