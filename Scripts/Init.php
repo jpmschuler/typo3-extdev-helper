@@ -67,7 +67,7 @@ declare(strict_types=1);
     exec('git rm --cached typoscript-lint.yml');
     echo "done!" . PHP_EOL;
     echo " => running composer up..." . PHP_EOL;
-    exec('composer up -W && composer normalize');
+    exec('composer up -W && composer normalize && composer config');
     echo "done!" . PHP_EOL;
     echo " => running npm up...";
     exec('npm up -W');
