@@ -19,6 +19,9 @@
     "payload/.phpstan.constants.php": ".phpstan.constants.php",
     "payload/phpstan.neon": "phpstan.neon",
     "payload/rector.php": "rector.php",
+    "payload/rector.TYPO3.9LTS.php": "rector.TYPO3.9LTS.php",
+    "payload/rector.TYPO3.10LTS.php": "rector.TYPO3.10LTS.php",
+    "payload/rector.TYPO3.11LTS.php": "rector.TYPO3.11LTS.php",
     "payload/typoscript-lint.yml": "typoscript-lint.yml"
   },
   "gitignore": [

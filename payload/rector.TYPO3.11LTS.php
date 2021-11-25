@@ -21,8 +21,6 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
-    $myVersion = exec('$(composer config extra.rector.typo3lts 2> /dev/null || echo 11)');
-
     $containerConfigurator->import(Typo3LevelSetList::UP_TO_TYPO3_11);
     $containerConfigurator->import(Typo3SetList::DATABASE_TO_DBAL);
 

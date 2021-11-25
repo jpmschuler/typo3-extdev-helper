@@ -21,9 +21,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
-    $myVersion = exec('$(composer config extra.rector.typo3lts 2> /dev/null || echo 11)');
-
-    $containerConfigurator->import(Typo3LevelSetList::UP_TO_TYPO3_11);
+    $containerConfigurator->import(Typo3LevelSetList::UP_TO_TYPO3_9);
     $containerConfigurator->import(Typo3SetList::DATABASE_TO_DBAL);
 
     // In order to have a better analysis from phpstan we teach it here some more things
@@ -39,7 +37,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(Option::IMPORT_DOC_BLOCKS, false);
 
     // Define your target version which you want to support
-    $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_74);
+    $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_72);
 
     // If you have an editorconfig and changed files should keep their format enable it here
     $parameters->set(Option::ENABLE_EDITORCONFIG, true);

@@ -69,6 +69,12 @@ declare(strict_types=1);
     echo " => running composer up..." . PHP_EOL;
     exec('composer up -W && composer normalize && composer config');
     echo "done!" . PHP_EOL;
+
+    echo " => setting default QA values..." . PHP_EOL;
+    exec('composer config extra.phpstan.level 2> /dev/null || composer config extra.phpstan.level 5');
+    exec('composer config extra.rector.typo3version 2> /dev/null || composer config extra.rector.typo3version 11');
+    echo "done!" . PHP_EOL;
+
     echo " => running npm up...";
     exec('npm up -W');
     echo "done!" . PHP_EOL;

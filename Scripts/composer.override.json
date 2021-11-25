@@ -64,9 +64,9 @@
       "mkdir -p .Build/$(composer config extra.typo3/cms.extension-key)",
       "rsync -ah --delete --exclude=node_modules --exclude=.* . .Build/$(composer config extra.typo3/cms.extension-key)"
     ],
-    "rector": "rector process .",
-    "rector:dry-run": "rector process --dry-run --  .",
-    "rector:dry-run:ci": "rector process --dry-run --output-format json -- . > report.rector.json",
+    "rector": "rector process --config=rector.TYPO3.$(composer config extra.rector.typo3version 2> /dev/null || echo 11)LTS.php .",
+    "rector:dry-run": "rector process --config=rector.TYPO3.$(composer config extra.rector.typo3version 2> /dev/null || echo 11)LTS.php --dry-run --  .",
+    "rector:dry-run:ci": "rector process --config=rector.TYPO3.$(composer config extra.rector.typo3version 2> /dev/null || echo 11)LTS.php --dry-run --output-format json -- . > report.rector.json",
     "test": [
       "@lint:php-cs-fixer",
       "@test:unit"
