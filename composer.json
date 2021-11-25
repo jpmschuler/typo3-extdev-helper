@@ -10,15 +10,14 @@
   ],
   "require": {
     "bk2k/configuration-installer": "0.1.1",
-    "camspiers/json-pretty": "^1.0",
     "ergebnis/composer-normalize": "^2.15",
     "friendsofphp/php-cs-fixer": "^v3.1.0",
     "helmich/typo3-typoscript-lint": "^2.5",
-    "michielroos/typo3scan": "*",
     "micheh/phpcs-gitlab": "^1.1.0",
+    "michielroos/typo3scan": "*",
     "nimut/testing-framework": "^6",
-    "rector/rector": "^0.11.52",
-    "saschaegerer/phpstan-typo3": "^0.13.3",
+    "rector/rector": "^0.12.5",
+    "saschaegerer/phpstan-typo3": "^1",
     "squizlabs/php_codesniffer": "^3.6"
   },
   "require-dev": {
