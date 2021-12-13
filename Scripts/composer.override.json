@@ -57,8 +57,8 @@
     "lint:phpcs:dry-run:ci": "phpcs --report=full --report-\\Micheh\\PhpCodeSniffer\\Report\\Gitlab=report.phpcs.json  Classes Configuration Tests",
     "lint:phpcs:dry-run": "phpcs Classes Configuration Tests",
     "lint:phpcbf": "phpcbf Classes Configuration Tests",
-    "lint:phpstan": "phpstan --level $(composer config extra.phpstan.level 2> /dev/null || echo 5) --memory-limit=1G analyse",
-    "lint:phpstan:ci": "phpstan --level $(composer config extra.phpstan.level 2> /dev/null || echo 5) --memory-limit=1G --no-progress --error-format gitlab analyse > report.phpstan.json",
+    "lint:phpstan": "phpstan --level=$(composer config extra.phpstan.level 2> /dev/null || echo 5) --memory-limit=1G analyse",
+    "lint:phpstan:ci": "phpstan --level=$(composer config extra.phpstan.level 2> /dev/null || echo 5) --memory-limit=1G --no-progress --error-format gitlab analyse > report.phpstan.json",
     "lint:typoscript": "typoscript-lint",
     "pretest:deprecations": [
       "mkdir -p .Build/$(composer config extra.typo3/cms.extension-key)",
