@@ -18,7 +18,7 @@
 		"build": "npm run test",
 		"develop": "trap 'npm run version:revert' SIGINT; npm run watch",
 		"develop:all": "npm run build && npm run version:prerelease && npm run develop:deploy",
-		"develop:deploy": "../typo3-wiwi_uni-due_de/deployment/extensionDeploy.sh",
+		"develop:deploy": "[ -f ./.deploy.sh ] && ./.deploy.sh",
 		"postversion:prerelease": "npm run version:copy",
 		"postversion:set": "npm run version:copy",
 		"test": "composer run lint:php-cs-fixer && composer run test",

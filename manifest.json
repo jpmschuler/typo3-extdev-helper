@@ -25,6 +25,7 @@
     "payload/typoscript-lint.yml": "typoscript-lint.yml"
   },
   "gitignore": [
+    "/.deploy.sh",
     "/.editorconfig",
     "/.php_cs.php",
     "/.php-cs-fixer.php",
