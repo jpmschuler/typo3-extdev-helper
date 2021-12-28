@@ -17,9 +17,13 @@ bootstrap:composer-install-dev:
     paths:
       - vendor/
       - .Build/
+      - .editorconfig
       - .php-cs-fixer.php
       - .phpcs.xml
       - .phpstan.constants.php
       - phpstan.neon
       - rector.php
+      - rector.TYPO3.9LTS.php
+      - rector.TYPO3.10LTS.php
+      - rector.TYPO3.11LTS.php
       - typoscript-lint.yml

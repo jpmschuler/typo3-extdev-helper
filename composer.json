@@ -25,6 +25,12 @@
     "roave/security-advisories": "dev-latest"
   },
   "config": {
+    "allow-plugins": {
+      "bk2k/configuration-installer": true,
+      "ergebnis/composer-normalize": true,
+      "typo3/class-alias-loader": true,
+      "typo3/cms-composer-installers": true
+    },
     "sort-packages": true
   },
   "extra": {
