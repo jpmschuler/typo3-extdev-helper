@@ -10,7 +10,6 @@
     "payload/.gitlab/200.semanticRelease-to-new-tag.yml": ".gitlab/200.semanticRelease-to-new-tag.yml",
     "payload/.gitlab/500.merge-release-with-develop.yml": ".gitlab/500.merge-release-with-develop.yml",
     "payload/.gitlab/800.publishToGitlabRegistry.yml": ".gitlab/800.publishToGitlabRegistry.yml",
-    "payload/.gitlab/900.publishToSatis.yml": ".gitlab/900.publishToSatis.yml",
     "payload/.editorconfig": ".editorconfig",
     "payload/.gitattributes-dist": ".gitattributes",
     "payload/.gitlab-ci.yml": ".gitlab-ci.yml",
