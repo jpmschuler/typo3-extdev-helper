@@ -57,35 +57,27 @@
     "lint:phpcs:dry-run:ci": "phpcs --report=full --report-\\Micheh\\PhpCodeSniffer\\Report\\Gitlab=report.phpcs.json  Classes Configuration Tests",
     "lint:phpcs:dry-run": "phpcs Classes Configuration Tests",
     "lint:phpcbf": "phpcbf Classes Configuration Tests",
-    "lint:phpstan": "phpstan --level=$(composer config extra.phpstan.level 2> /dev/null || echo 5) --memory-limit=1G analyse",
-    "lint:phpstan:ci": "phpstan --level=$(composer config extra.phpstan.level 2> /dev/null || echo 5) --memory-limit=1G --no-progress --error-format gitlab analyse > report.phpstan.json",
+    "lint:phpstan": "phpstan --level=$(composer config extra.codequality.phpstan-level 2> \/dev\/null || echo 5) --memory-limit=1G analyse",
+    "lint:phpstan:ci": "phpstan --level=$(composer config extra.codequality.phpstan-level 2> \/dev\/null || echo 5) --memory-limit=1G --no-progress --error-format gitlab analyse > report.phpstan.json",
     "lint:typoscript": "typoscript-lint",
     "pretest:deprecations": [
       "mkdir -p .Build/$(composer config extra.typo3/cms.extension-key)",
       "rsync -ah --delete --exclude=node_modules --exclude=.* . .Build/$(composer config extra.typo3/cms.extension-key)"
     ],
-    "rector": "rector process --config=rector.TYPO3.$(composer config extra.rector.typo3version 2> /dev/null || echo 11)LTS.php .",
-    "rector:dry-run": "rector process --config=rector.TYPO3.$(composer config extra.rector.typo3version 2> /dev/null || echo 11)LTS.php --dry-run --  .",
-    "rector:dry-run:ci": "rector process --config=rector.TYPO3.$(composer config extra.rector.typo3version 2> /dev/null || echo 11)LTS.php --dry-run --output-format json -- . > report.rector.json",
+    "rector": "rector process --config=rector.php .",
+    "rector:dry-run": "rector process --config=rector.php --dry-run --  .",
+    "rector:dry-run:ci": "rector process --config=rector.php --dry-run --output-format json -- . > report.rector.json",
+    "rector:force": "rector process .",
     "test": [
       "@lint:php-cs-fixer",
       "@test:unit"
     ],
     "test:deprecations": [
       "@pretest:deprecations",
-      "typo3scan scan --target 9 -- .Build/$(composer config extra.typo3/cms.extension-key) "
-    ],
-    "test:deprecations:9LTS:ci": [
-      "@pretest:deprecations",
-      "typo3scan scan --target 9 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > report.$(composer config extra.typo3/cms.extension-key)-deprecations-9LTS.xml"
-    ],
-    "test:deprecations:10LTS:ci": [
-      "@pretest:deprecations",
-      "typo3scan scan --target 10 --format junit -- .Build/$(composer config extra.typo3/cms.extension-key) > report.$(composer config extra.typo3/cms.extension-key)-deprecations-10LTS.xml"
+      "typo3scan scan --target $(composer config extra.codequality.typo3-deprecations 2> /dev/null || echo 11) -- .Build\/$(composer config extra.typo3\/cms.extension-key) "
     ],
     "test:deprecations:ci": [
-      "@test:deprecations:9LTS:ci",
-      "@test:deprecations:10LTS:ci"
+      "@test:deprecations"
     ],
     "test:unit": "phpunit -c $(composer config vendor-dir)/nimut/testing-framework/res/Configuration/UnitTests.xml --log-junit report.phpunit.xml Tests/Unit",
     "typo3-extdev-helper-init": [

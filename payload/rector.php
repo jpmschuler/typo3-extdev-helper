@@ -2,28 +2,29 @@
 
 declare(strict_types=1);
 
+use Composer\InstalledVersions;
+use Composer\Semver\VersionParser;
 use Rector\Core\Configuration\Option;
 use Rector\Core\ValueObject\PhpVersion;
-use Rector\Php55\Rector\String_\StringClassNameToClassConstantRector;
-use Rector\PostRector\Rector\NameImportingPostRector;
 use Ssch\TYPO3Rector\Configuration\Typo3Option;
 use Ssch\TYPO3Rector\FileProcessor\Composer\Rector\ExtensionComposerRector;
 use Ssch\TYPO3Rector\FileProcessor\TypoScript\Rector\FileIncludeToImportStatementTypoScriptRector;
-use Ssch\TYPO3Rector\Rector\v9\v0\InjectAnnotationRector;
 use Ssch\TYPO3Rector\Rector\General\ConvertImplicitVariablesToExplicitGlobalsRector;
 use Ssch\TYPO3Rector\Rector\General\ExtEmConfRector;
 use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
-use Ssch\TYPO3Rector\FileProcessor\TypoScript\Rector\ExtbasePersistenceTypoScriptRector;
-
 use Ssch\TYPO3Rector\Set\Typo3SetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
-    $myVersion = exec('$(composer config extra.rector.typo3lts 2> /dev/null || echo 11)');
-
-    $containerConfigurator->import(Typo3LevelSetList::UP_TO_TYPO3_11);
+    if (InstalledVersions::satisfies(new VersionParser, 'typo3/cms-core', '^9')) {
+        $containerConfigurator->import(Typo3LevelSetList::UP_TO_TYPO3_9);
+    } elseif (InstalledVersions::satisfies(new VersionParser, 'typo3/cms-core', '^10')) {
+        $containerConfigurator->import(Typo3LevelSetList::UP_TO_TYPO3_10);
+    } else {
+        $containerConfigurator->import(Typo3LevelSetList::UP_TO_TYPO3_11);
+    }
     $containerConfigurator->import(Typo3SetList::DATABASE_TO_DBAL);
 
     // In order to have a better analysis from phpstan we teach it here some more things
@@ -99,9 +100,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     // Optional non-php file functionalities:
     // @see https://github.com/sabbelasichon/typo3-rector/blob/main/docs/beyond_php_file_processors.md
 
-    // Adapt your composer.json dependencies to the latest available version for the defined SetList
-    // $containerConfigurator->import(Typo3SetList::COMPOSER_PACKAGES_104_CORE);
-    // $containerConfigurator->import(Typo3SetList::COMPOSER_PACKAGES_104_EXTENSIONS);
 
     // Rewrite your extbase persistence class mapping from typoscript into php according to official docs.
     // This processor will create a summarized file with all of the typoscript rewrites combined into a single file.

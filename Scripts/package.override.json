@@ -1,6 +1,6 @@
 {
 	"devDependencies": {
-		"concurrently": "^6.2.2",
+		"concurrently": "^7.0.0",
 		"conventional-changelog-typo3": "^1.2.0",
 		"jsonlint-cli": null,
 		"onchange": "^7.1.0",
