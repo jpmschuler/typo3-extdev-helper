@@ -1,7 +1,7 @@
 {
   "name": "typo3-extdev-helper",
   "description": "composer package to drop CI/CD and QA related stuff into an typo3 extension",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "J. Peter M. Schuler",
   "license": "MIT",
   "repository": {
