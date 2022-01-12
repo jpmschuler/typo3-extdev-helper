@@ -56,28 +56,29 @@ declare(strict_types=1);
     echo " => adding overrides to package.json...";
     mergeJson('package');
     echo "done!" . PHP_EOL;
-    echo " => removing old git cached files..." . PHP_EOL;
-    exec('git rm --cached .php-cs');
-    exec('git rm --cached .php-cs.xml');
-    exec('git rm --cached .phpstan.constants.php');
-    exec('git rm --cached .php-cs-fixer.php');
-    exec('git rm --cached .gitlab-ci-codequality.yml');
-    exec('git rm --cached phpstan.neon');
-    exec('git rm --cached rector.php');
-    exec('git rm --cached typoscript-lint.yml');
+    echo " => removing old codequality config from git cache if existing..." . PHP_EOL;
+    exec('git rm --cached .php-cs 2> /dev/null || true');
+    exec('git rm --cached .php-cs.xml 2> /dev/null || true');
+    exec('git rm --cached .phpstan.constants.php 2> /dev/null || true');
+    exec('git rm --cached .php-cs-fixer.php 2> /dev/null || true');
+    exec('git rm --cached .gitlab-ci-codequality.yml 2> /dev/null || true');
+    exec('git rm --cached phpstan.neon 2> /dev/null || true');
+    exec('git rm --cached rector.php 2> /dev/null || true');
+    exec('git rm --cached typoscript-lint.yml 2> /dev/null || true');
     echo "done!" . PHP_EOL;
     echo " => running composer up..." . PHP_EOL;
     exec('composer up -W && composer normalize && composer config');
     echo "done!" . PHP_EOL;
 
-    echo " => setting default QA values..." . PHP_EOL;
-    exec('composer config extra.phpstan.level 2> /dev/null || composer config extra.phpstan.level 5');
-    exec('composer config extra.rector.typo3version 2> /dev/null || composer config extra.rector.typo3version 11');
+    echo " => setting default codequality settings..." . PHP_EOL;
+    exec('composer config extra.codequality.phpstan-level 2> /dev/null || composer config extra.codequality.phpstan-level 5');
+    exec('composer config extra.codequality.typo3-deprecations 2> /dev/null || composer config extra.codequality.typo3-deprecations 11');
     echo "done!" . PHP_EOL;
 
     echo " => running npm up...";
     exec('npm up -W');
     echo "done!" . PHP_EOL;
+
     echo " => adding default folders if not existing..." . PHP_EOL;
     if (!file_exists('./Classes')) {
         if (!mkdir('./Classes') && !is_dir('./Classes')) {
