@@ -38,6 +38,9 @@ lint:phpcs:
     - composer run lint:phpcs:dry-run:ci
   artifacts:
     when: always
+    paths:
+      - "report.*"
+    expire_in: 7 days
     reports:
       codequality: "report.*"
 
@@ -52,5 +55,8 @@ lint:phpstan:
     - composer run lint:phpstan:ci
   artifacts:
     when: always
+    paths:
+      - "report.*"
+    expire_in: 7 days
     reports:
       codequality: "report.*"

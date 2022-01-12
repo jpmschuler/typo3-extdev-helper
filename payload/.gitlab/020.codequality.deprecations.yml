@@ -1,18 +1,5 @@
-deprecations:9LTS:
-  cache: {}
-  image: jpmschuler/docker-node-php:v8.0.0
-  rules:
-    - !reference [.rules_default, rules]
-  needs: ["bootstrap:composer-install-dev"]
-  stage: codequality
-  allow_failure: true
-  script:
-    - composer run test:deprecations:9LTS:ci
-  artifacts:
-    reports:
-      junit: "report.*"
 
-deprecations:10LTS:
+deprecations:typo3scan:
   cache: {}
   image: jpmschuler/docker-node-php:v8.0.0
   rules:
@@ -21,8 +8,11 @@ deprecations:10LTS:
   stage: codequality
   allow_failure: true
   script:
-    - composer run test:deprecations:10LTS:ci
+    - composer run test:deprecations:ci
   artifacts:
+    paths:
+      - "report.*"
+    expire_in: 7 days
     reports:
       junit: "report.*"
 
@@ -36,5 +26,8 @@ deprecations:rector:
   script:
     - composer run rector:dry-run:ci
   artifacts:
+    paths:
+      - "report.*"
+    expire_in: 7 days
     reports:
       junit: "report.*"
