@@ -9,6 +9,7 @@ bootstrap:npm-ci:
   before_script:
     - eval $(ssh-agent -s); echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null; mkdir -p ~/.ssh; chmod 700 ~/.ssh
     - echo -e "Host ${CI_SERVER_HOST}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+    - npm install -g pnpm
   script:
     - pnpm install
   artifacts:
