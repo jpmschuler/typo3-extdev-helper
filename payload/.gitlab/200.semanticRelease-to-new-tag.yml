@@ -18,4 +18,4 @@ git:semanticRelease-to-new-tag:
     - export GIT_COMMITTER_EMAIL="$GITLAB_USER_EMAIL"
   script:
     - git checkout release
-    - npx semantic-release
+    - pnpm exec semantic-release
