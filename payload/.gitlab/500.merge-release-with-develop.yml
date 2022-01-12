@@ -16,7 +16,7 @@ git:merge-release-with-develop:
     - export GIT_AUTHOR_EMAIL="${GITLAB_USER_EMAIL}"
     - export GIT_COMMITTER_NAME="${GITLAB_USER_NAME}"
     - export GIT_COMMITTER_EMAIL="${GITLAB_USER_EMAIL}"
-    - npm install -g pnpm
+    - sudo npm install -g pnpm
   script:
     - git checkout release
     - git checkout develop

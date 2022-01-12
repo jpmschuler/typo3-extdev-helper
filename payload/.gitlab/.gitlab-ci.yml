@@ -17,7 +17,7 @@ variables:
   YARN_CACHE_FOLDER: .cache/yarn/
 
 default:
-  image: thecodingmachine/php:7.4-v4-cli-node14
+  image: thecodingmachine/php:7.4-v4-cli-node16
   cache:
     key: "CI_COMMIT_REF_SLUG"
     paths:
