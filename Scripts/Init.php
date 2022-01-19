@@ -100,6 +100,6 @@ declare(strict_types=1);
         }
         touch('./Tests/Unit/.keep');
     }
-    echo "done!" . PHP_EOL;
+    echo "everything done!" . PHP_EOL;
 
 })();
