@@ -19,7 +19,7 @@ deprecations:rector:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
-  needs: ["bootstrap:composer-install-dev"]
+  needs: ["bootstrap:composer-and-pnpm"]
   stage: codequality
   allow_failure: true
   script:
