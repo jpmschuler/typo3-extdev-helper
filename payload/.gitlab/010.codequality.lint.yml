@@ -3,7 +3,7 @@ lint:php:7.2:
   rules:
     - !reference [.rules_default, rules]
   needs: []
-  image: thecodingmachine/php:7.2-v4-cli-node14
+  image: thecodingmachine/php:7.2-v4-slim-cli
   stage: codequality
   script:
     - composer run lint:php
@@ -13,7 +13,27 @@ lint:php:7.4:
   rules:
     - !reference [.rules_default, rules]
   needs: []
-  image: thecodingmachine/php:7.4-v4-cli-node14
+  image: thecodingmachine/php:7.4-v4-slim-cli
+  stage: codequality
+  script:
+    - composer run lint:php
+
+lint:php:8.0:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: []
+  image: thecodingmachine/php:8.0-v4-slim-cli
+  stage: codequality
+  script:
+    - composer run lint:php
+
+lint:php:8.1:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: []
+  image: thecodingmachine/php:8.1-v4-slim-cli
   stage: codequality
   script:
     - composer run lint:php
