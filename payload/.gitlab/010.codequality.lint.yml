@@ -23,7 +23,7 @@ lint:php-cs-fixer:
   rules:
     - !reference [.rules_default, rules]
   stage: codequality
-  needs: ["bootstrap:composer-install-dev"]
+  needs: ["bootstrap:composer-and-pnpm"]
   script:
     - composer run lint:php-cs-fixer:dry-run
 
@@ -33,7 +33,7 @@ lint:phpcs:
     - !reference [.rules_default, rules]
   stage: codequality
   allow_failure: true
-  needs: ["bootstrap:composer-install-dev"]
+  needs: ["bootstrap:composer-and-pnpm"]
   script:
     - composer run lint:phpcs:dry-run:ci
   artifacts:
@@ -48,7 +48,7 @@ lint:phpstan:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
-  needs: ["bootstrap:composer-install-dev"]
+  needs: ["bootstrap:composer-and-pnpm"]
   stage: codequality
   allow_failure: true
   script:

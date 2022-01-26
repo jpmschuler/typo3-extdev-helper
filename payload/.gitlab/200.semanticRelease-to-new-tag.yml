@@ -5,7 +5,7 @@ git:semanticRelease-to-new-tag:
     - !reference [.rules_onlyrelease, rules]
   stage: release-to-new-tag
   retry: 2
-  needs: ["bootstrap:npm-ci","bootstrap:composer-install-dev"]
+  needs: ["bootstrap:composer-and-pnpm"]
   before_script:
     - eval $(ssh-agent -s); echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null; mkdir -p ~/.ssh; chmod 700 ~/.ssh
     - echo -e "Host ${CI_SERVER_HOST}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config

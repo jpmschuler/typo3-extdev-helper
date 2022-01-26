@@ -5,7 +5,7 @@ git:merge-release-with-develop:
   cache:
     policy: pull
   retry: 2
-  needs: ["bootstrap:npm-ci","bootstrap:composer-install-dev","git:semanticRelease-to-new-tag"]
+  needs: ["bootstrap:composer-and-pnpm","git:semanticRelease-to-new-tag"]
   before_script:
     - eval $(ssh-agent -s); echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null; mkdir -p ~/.ssh; chmod 700 ~/.ssh
     - echo -e "Host ${CI_SERVER_HOST}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config

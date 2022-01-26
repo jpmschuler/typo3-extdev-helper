@@ -1,10 +1,9 @@
 
 deprecations:typo3scan:
   cache: {}
-  image: jpmschuler/docker-node-php:v8.0.0
   rules:
     - !reference [.rules_default, rules]
-  needs: ["bootstrap:composer-install-dev"]
+  needs: ["bootstrap:composer-and-pnpm"]
   stage: codequality
   allow_failure: true
   script:

@@ -1,8 +1,7 @@
 {
   "files": {
     "payload/.gitlab/.gitlab-ci.yml": ".gitlab/.gitlab-ci.yml",
-    "payload/.gitlab/005.bootstrap.composer.install.dev.yml": ".gitlab/005.bootstrap.composer.install.dev.yml",
-    "payload/.gitlab/006.bootstrap.pnpm.ci.yml": ".gitlab/006.bootstrap.pnpm.ci.yml",
+    "payload/.gitlab/005.bootstrap.yml": ".gitlab/005.bootstrap.yml",
     "payload/.gitlab/010.codequality.lint.yml": ".gitlab/010.codequality.lint.yml",
     "payload/.gitlab/020.codequality.deprecations.yml": ".gitlab/020.codequality.deprecations.yml",
     "payload/.gitlab/040.test.prebuild.yml": ".gitlab/040.test.prebuild.yml",

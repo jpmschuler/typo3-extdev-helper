@@ -1,3 +1,11 @@
+variables:
+  npm_config_cache: $CI_PROJECT_DIR/.cache/npm/
+  npm_config_store_dir:  $CI_PROJECT_DIR/.cache/npm-store/
+  COMPOSER_CACHE_DIR: $CI_PROJECT_DIR/.cache/composer/
+  YARN_CACHE_FOLDER: $CI_PROJECT_DIR/.cache/yarn/
+  GIT_STRATEGY: pull
+  CI_JOB_SKIP_EXIT_CODE: 2
+
 stages:
   - bootstrap
   - codequality
@@ -10,18 +18,13 @@ stages:
   - buildTag
   - deploy
 
-variables:
-  GIT_STRATEGY: pull
-  npm_config_cache: .cache/npm-cache/
-  COMPOSER_CACHE_DIR: .cache/composer/
-  YARN_CACHE_FOLDER: .cache/yarn/
 
 default:
   image: thecodingmachine/php:7.4-v4-cli-node16
   cache:
-    key: "CI_COMMIT_REF_SLUG"
+    key: package-manager-cache
     paths:
-      - .cache
+      - $CI_PROJECT_DIR/.cache/
 
 .rules_default:
   rules:
@@ -59,8 +62,7 @@ default:
     - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/ && $SATIS_JOB_URL'
 
 include:
-  - '/.gitlab/005.bootstrap.composer.install.dev.yml'
-  - '/.gitlab/006.bootstrap.pnpm.ci.yml'
+  - '/.gitlab/005.bootstrap.yml'
   - '/.gitlab/010.codequality.lint.yml'
   - '/.gitlab/020.codequality.deprecations.yml'
   - '/.gitlab/040.test.prebuild.yml'
