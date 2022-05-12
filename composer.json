@@ -1,7 +1,7 @@
 {
 	"name": "jpmschuler/typo3-extdev-helper",
-	"type": "project-configuration",
 	"license": "MIT",
+	"type": "project-configuration",
 	"authors": [
 		{
 			"name": "J. Peter M. Schuler",
@@ -18,6 +18,7 @@
 		"nimut/testing-framework": "^6",
 		"rector/rector": "^0.12.5",
 		"saschaegerer/phpstan-typo3": "^1",
+		"sebastian/phpcpd": "^6.0.3",
 		"squizlabs/php_codesniffer": "^3.6"
 	},
 	"require-dev": {

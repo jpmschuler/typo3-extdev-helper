@@ -47,6 +47,16 @@ lint:php-cs-fixer:
   script:
     - composer run lint:php-cs-fixer:dry-run
 
+lint:phpcpd:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  stage: codequality
+  allow_failure: true
+  needs: ["bootstrap:composer-and-pnpm"]
+  script:
+    - composer run lint:phpcpd
+    -
 lint:phpcs:
   cache: {}
   rules:
