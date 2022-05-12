@@ -69,11 +69,16 @@
 		"lint:phpstan:ci": "phpstan --level=$(composer config extra.codequality.phpstan-level-musthave 2> \/dev\/null || echo 5) --memory-limit=1G --no-progress --error-format gitlab analyse > report.phpstan.json",
 		"lint:typoscript": "typoscript-lint",
 		"lint:xliff": "xmllint --schema .Build\/xliff-core-1.2-strict.xsd --noout $(find Resources\/Private\/Language -name '*.xlf')",
+		"lint:xliff:installPrerequisites":"wget -q -O .Build\/xliff-core-1.2-strict.xsd https:\/\/docs.oasis-open.org\/xliff\/v1.2\/os\/xliff-core-1.2-strict.xsd",
 		"pretest:deprecations": [
 			"mkdir -p .Build\/$(composer config extra.typo3\/cms.extension-key)",
 			"rsync -ah --delete --exclude=node_modules --exclude=.* . .Build\/$(composer config extra.typo3\/cms.extension-key)"
 		],
-		"post-install": "wget -q -O .Build\/xliff-core-1.2-strict.xsd https:\/\/docs.oasis-open.org\/xliff\/v1.2\/os\/xliff-core-1.2-strict.xsd",
+		"post-install":
+		[
+			"@lint:xliff:installPrerequisites",
+			"@@typo3-extdev-helper-init"
+		],
 		"post-update": "@post-install",
 		"rector": "rector process --config=rector.php .",
 		"rector:dry-run": "rector process --config=rector.php --dry-run --  .",
