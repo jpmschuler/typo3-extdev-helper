@@ -74,6 +74,7 @@
 			"rsync -ah --delete --exclude=node_modules --exclude=.* . .Build\/$(composer config extra.typo3\/cms.extension-key)"
 		],
 		"post-install": "wget -q -O .Build\/xliff-core-1.2-strict.xsd https:\/\/docs.oasis-open.org\/xliff\/v1.2\/os\/xliff-core-1.2-strict.xsd",
+		"post-update": "@post-install",
 		"rector": "rector process --config=rector.php .",
 		"rector:dry-run": "rector process --config=rector.php --dry-run --  .",
 		"rector:dry-run:ci": "rector process --config=rector.php --dry-run --output-format json -- . > report.rector.json",
