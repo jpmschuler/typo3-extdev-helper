@@ -1,0 +1,14 @@
+{
+  "name": "typo3-extdev-helper",
+  "description": "composer package to drop CI/CD and QA related stuff into an typo3 extension",
+  "version": "2.5.7",
+  "author": "J. Peter M. Schuler",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.it-objects.de:typo3/extensions/typo3-extdev-helper.git"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  }
+}

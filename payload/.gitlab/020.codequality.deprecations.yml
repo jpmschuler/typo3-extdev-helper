@@ -1,0 +1,15 @@
+deprecations:rector:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: ["bootstrap:composer-and-pnpm"]
+  stage: codequality
+  allow_failure: true
+  script:
+    - composer run rector:dry-run:ci
+  artifacts:
+    paths:
+      - "report.*"
+    expire_in: 7 days
+    reports:
+      junit: "report.*"

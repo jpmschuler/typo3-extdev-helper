@@ -1,0 +1,102 @@
+lint:php:7.2:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: []
+  image: thecodingmachine/php:7.2-v4-slim-cli
+  stage: codequality
+  script:
+    - composer run lint:php
+
+lint:php:7.4:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: []
+  image: thecodingmachine/php:7.4-v4-slim-cli
+  stage: codequality
+  script:
+    - composer run lint:php
+
+lint:php:8.0:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: []
+  image: thecodingmachine/php:8.0-v4-slim-cli
+  stage: codequality
+  script:
+    - composer run lint:php
+
+lint:php:8.1:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: []
+  image: thecodingmachine/php:8.1-v4-slim-cli
+  stage: codequality
+  script:
+    - composer run lint:php
+
+lint:php-cs-fixer:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  stage: codequality
+  needs: ["bootstrap:composer-and-pnpm"]
+  script:
+    - composer run lint:php-cs-fixer:dry-run
+
+lint:phpcpd:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  stage: codequality
+  allow_failure: true
+  needs: ["bootstrap:composer-and-pnpm"]
+  script:
+    - composer run lint:phpcpd
+
+lint:phpcs:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  stage: codequality
+  allow_failure: true
+  needs: ["bootstrap:composer-and-pnpm"]
+  script:
+    - composer run lint:phpcs:dry-run:ci
+  artifacts:
+    when: always
+    paths:
+      - "report.*"
+    expire_in: 7 days
+    reports:
+      codequality: "report.*"
+
+lint:phpstan:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: ["bootstrap:composer-and-pnpm"]
+  stage: codequality
+  allow_failure: true
+  script:
+    - composer run lint:phpstan:ci
+  artifacts:
+    when: always
+    paths:
+      - "report.*"
+    expire_in: 7 days
+    reports:
+      codequality: "report.*"
+
+lint:xliff:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: ["bootstrap:composer-and-pnpm"]
+  stage: codequality
+  allow_failure: true
+  script:
+    - composer run lint:xliff
