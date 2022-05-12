@@ -90,3 +90,14 @@ lint:phpstan:
     expire_in: 7 days
     reports:
       codequality: "report.*"
+
+lint:xliff:
+  cache: {}
+  rules:
+    - !reference [.rules_default, rules]
+  needs: ["bootstrap:composer-and-pnpm"]
+  stage: codequality
+  allow_failure: true
+  script:
+    - composer run lint:xliff
+    -
