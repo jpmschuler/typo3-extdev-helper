@@ -56,7 +56,7 @@ lint:phpcpd:
   needs: ["bootstrap:composer-and-pnpm"]
   script:
     - composer run lint:phpcpd
-    -
+
 lint:phpcs:
   cache: {}
   rules:
