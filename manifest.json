@@ -31,7 +31,6 @@
     "/rector.php",
     "/typoscript-lint.yml",
     "/report.*",
-    "/.cache*",
-    "/composer.lock"
+    "/.cache*"
   ]
 }
