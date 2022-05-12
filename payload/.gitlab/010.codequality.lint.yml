@@ -100,4 +100,4 @@ lint:xliff:
   allow_failure: true
   script:
     - composer run lint:xliff
-    -
+
