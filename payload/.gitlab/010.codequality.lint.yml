@@ -1,40 +1,13 @@
-lint:php:7.2:
+lint:php:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
   needs: []
-  image: thecodingmachine/php:7.2-v4-slim-cli
+  image: thecodingmachine/php:$PHPVERSION-v4-slim-cli
   stage: codequality
-  script:
-    - composer run lint:php
-
-lint:php:7.4:
-  cache: {}
-  rules:
-    - !reference [.rules_default, rules]
-  needs: []
-  image: thecodingmachine/php:7.4-v4-slim-cli
-  stage: codequality
-  script:
-    - composer run lint:php
-
-lint:php:8.0:
-  cache: {}
-  rules:
-    - !reference [.rules_default, rules]
-  needs: []
-  image: thecodingmachine/php:8.0-v4-slim-cli
-  stage: codequality
-  script:
-    - composer run lint:php
-
-lint:php:8.1:
-  cache: {}
-  rules:
-    - !reference [.rules_default, rules]
-  needs: []
-  image: thecodingmachine/php:8.1-v4-slim-cli
-  stage: codequality
+  parallel:
+    matrix:
+      - PHPVERSION: ['7.4', '8.0', '8.1']
   script:
     - composer run lint:php
 
