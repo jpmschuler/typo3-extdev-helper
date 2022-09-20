@@ -13,27 +13,17 @@ use Ssch\TYPO3Rector\FileProcessor\Composer\Rector\ExtensionComposerRector;
 use Ssch\TYPO3Rector\Rector\General\ConvertImplicitVariablesToExplicitGlobalsRector;
 use Ssch\TYPO3Rector\Rector\General\ExtEmConfRector;
 use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
-use Ssch\TYPO3Rector\FileProcessor\TypoScript\Rector\FileIncludeToImportStatementTypoScriptRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $parameters = $rectorConfig->parameters();
 
-    if (InstalledVersions::satisfies(new VersionParser, 'typo3/cms-core', '^9')) {
-        $rectorConfig->import(Typo3LevelSetList::UP_TO_TYPO3_9);
-    } elseif (InstalledVersions::satisfies(new VersionParser, 'typo3/cms-core', '^10')) {
-        $rectorConfig->import(Typo3LevelSetList::UP_TO_TYPO3_10);
-    } else {
-        $rectorConfig->import(Typo3LevelSetList::UP_TO_TYPO3_11);
-    }
+    $rectorConfig->import(Typo3LevelSetList::UP_TO_TYPO3_10);
 
     // FQN classes are not imported by default. If you don't do it manually after every Rector run, enable it by:
     $rectorConfig->importNames();
 
     // this will not import root namespace classes, like \DateTime or \Exception
     $parameters->set(Option::IMPORT_SHORT_CLASSES, false);
-
-    // this prevents infinite loop issues due to symlinks in e.g. ".Build/" folders within single extensions
-    $parameters->set(Option::FOLLOW_SYMLINKS, false);
 
     // Define your target version which you want to support
     $rectorConfig->phpVersion(PhpVersion::PHP_74);
@@ -112,6 +102,4 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->rule(ExtensionComposerRector::class);
 
     $services = $rectorConfig->services();
-    // Do you want to modernize your TypoScript include statements for files and move from <INCLUDE /> to @import use the FileIncludeToImportStatementTypoScriptRector
-    $services->set(FileIncludeToImportStatementTypoScriptRector::class);
 };
