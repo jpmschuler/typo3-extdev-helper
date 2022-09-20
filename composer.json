@@ -16,13 +16,14 @@
 		"helmich/typo3-typoscript-lint": "^2.5",
 		"micheh/phpcs-gitlab": "^1.1.0",
 		"nimut/testing-framework": "^6",
-		"rector/rector": "^0.12.5",
+		"ssch/typo3-rector": "^1",
 		"saschaegerer/phpstan-typo3": "^1",
 		"sebastian/phpcpd": "^6.0.3",
 		"squizlabs/php_codesniffer": "^3.6"
 	},
 	"require-dev": {
-		"roave/security-advisories": "dev-latest"
+		"roave/security-advisories": "dev-latest",
+		"typo3/cms-core": "^v10.5.32 || ^v11.4.16"
 	},
 	"config": {
 		"allow-plugins": {
