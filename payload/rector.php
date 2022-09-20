@@ -44,11 +44,12 @@ return static function (RectorConfig $rectorConfig): void {
             'ext_localconf.php',
             'ext_emconf.php',
             'ext_tables.php',
-            __DIR__ . '/**/Configuration/TCA/*',
-            __DIR__ . '/**/Configuration/RequestMiddlewares.php',
-            __DIR__ . '/**/Configuration/Commands.php',
-            __DIR__ . '/**/Configuration/AjaxRoutes.php',
-            __DIR__ . '/**/Configuration/Extbase/Persistence/Classes.php',
+            'Configuration/TCA/*',
+            'Configuration/TCA/Overrides/*',
+            'Configuration/RequestMiddlewares.php',
+            'Configuration/Commands.php',
+            'Configuration/AjaxRoutes.php',
+            'Configuration/Extbase/Persistence/Classes.php',
         ],
 
         // We skip those directories on purpose as there might be node_modules or similar
