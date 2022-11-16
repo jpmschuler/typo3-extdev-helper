@@ -40,6 +40,13 @@
 			"web-dir": ".Build/public"
 		}
 	},
+	"repositories": {
+		"b2k/configuration-installer":  {
+			"url": "https://github.com/jpmschuler/configuration-installer.git",
+			"type": "git",
+			"canonical": true
+		}
+	},
 	"scripts": {
 		"release:major": [
 			"npm version major -m '[RELEASE] releasing v%s'",
