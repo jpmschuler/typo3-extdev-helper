@@ -72,7 +72,7 @@
 		"lint:xliff:installPrerequisites": "wget -q -O .Build\/xliff-core-1.2-strict.xsd https:\/\/docs.oasis-open.org\/xliff\/v1.2\/os\/xliff-core-1.2-strict.xsd",
 		"pretest:deprecations": [
 			"mkdir -p .Build\/$(composer config extra.typo3\/cms.extension-key)",
-			"rsync -ah --delete --exclude=node_modules --exclude=.* . .Build\/$(composer config extra.typo3\/cms.extension-key)"
+			"find ./* -mindepth 0 -maxdepth 0 -not -path './node_modules' -exec cp -r {} .Build/$(composer config extra.typo3/cms.extension-key)/ \\;"
 		],
 		"post-install": [
 			"@lint:xliff:installPrerequisites",
