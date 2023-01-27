@@ -69,7 +69,24 @@ lint:xliff:
   image: pipelinecomponents/xmllint:latest
   cache: {}
   rules:
-    - !reference [.rules_default, rules]
+    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
+      changes:
+        - Resources/Private/Language/**.xlf
+    - if: '$CI_COMMIT_BRANCH=~ /^feature(.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
+      changes:
+        - Resources/Private/Language/**.xlf
+    - if: '$CI_COMMIT_BRANCH=~ /^issue(.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
+      changes:
+        - Resources/Private/Language/**.xlf
+    - if: '$CI_COMMIT_BRANCH=~ /^task(.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
+      changes:
+        - Resources/Private/Language/**.xlf
+    - if: '$CI_COMMIT_BRANCH=~ /^bugfix(.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
+      changes:
+        - Resources/Private/Language/**.xlf
+    - if: '$CI_COMMIT_BRANCH=~ /^breaking(.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
+      changes:
+        - Resources/Private/Language/**.xlf
   needs: ["bootstrap:composer-and-pnpm"]
   stage: codequality
   allow_failure: true

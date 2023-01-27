@@ -6,6 +6,9 @@ git:semanticRelease-to-new-tag:
   stage: release-to-new-tag
   retry: 2
   needs: ["bootstrap:composer-and-pnpm"]
+  artifacts:
+    reports:
+      dotenv: build.env
   before_script:
     - eval $(ssh-agent -s); echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null; mkdir -p ~/.ssh; chmod 700 ~/.ssh
     - echo -e "Host ${CI_SERVER_HOST}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
@@ -21,3 +24,4 @@ git:semanticRelease-to-new-tag:
   script:
     - git checkout release
     - pnpm exec semantic-release
+    - echo "RELEVANT_COMMIT_MSG=$(git rev-list -n 1 --pretty="%B" HEAD)" >> build.env

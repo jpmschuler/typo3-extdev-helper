@@ -1,0 +1,11 @@
+notify:NewVersion:
+  stage: notify
+  rules:
+    - !reference [.rules_onlyrelease, rules]
+  image: curlimages/curl:latest
+  needs: [ "git:semanticRelease-to-new-tag" ]
+  allow_failure: true
+  script:
+    - export PUSHOVER_TITLE="${CI_PROJECT_TITLE} new tag"
+    - export PUSHOVER_MESSAGE="${RELEVANT_COMMIT_MSG}"
+    - curl -s --form-string "token=${PUSHOVER_API_TOKEN}" --form-string "user=${PUSHOVER_USER_KEY}" --form-string "message=${PUSHOVER_MESSAGE}" --form-string "title=${PUSHOVER_TITLE}" --form-string "url=${PUSHOVER_URL}" --form-string "url_title=${PUSHOVER_URL_TITLE}" https://api.pushover.net/1/messages.json

@@ -17,6 +17,7 @@ stages:
   - release-to-new-tag
   - buildTag
   - deploy
+  - notify
 
 
 default:
@@ -70,3 +71,4 @@ include:
   - '/.gitlab/200.semanticRelease-to-new-tag.yml'
   - '/.gitlab/500.merge-release-with-develop.yml'
   - '/.gitlab/800.publishToGitlabRegistry.yml'
+  - '/.gitlab/900.notify.yml'

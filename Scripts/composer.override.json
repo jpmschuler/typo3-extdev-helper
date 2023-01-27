@@ -66,7 +66,7 @@
 		"lint:phpcs:dry-run": "phpcs Classes Configuration Tests",
 		"lint:phpcs:dry-run:ci": "phpcs --report=full --report-\\\\Micheh\\\\PhpCodeSniffer\\\\Report\\\\Gitlab=report.phpcs.json  Classes Configuration Tests",
 		"lint:phpstan": "phpstan --level=$(composer config extra.codequality.phpstan-level 2> \/dev\/null || echo 5) --memory-limit=1G analyse",
-		"lint:phpstan:ci": "phpstan --level=$(composer config extra.codequality.phpstan-level-musthave 2> \/dev\/null || echo 5) --memory-limit=1G --no-progress --error-format=gitlab analyse > report.phpstan.json",
+		"lint:phpstan:ci": "phpstan --level=$(composer config extra.codequality.phpstan-level 2> \/dev\/null || echo 5) --memory-limit=1G --no-progress --error-format=gitlab analyse > report.phpstan.json",
 		"lint:typoscript": "typoscript-lint",
 		"lint:xliff": "xmllint --schema .Build\/xliff-core-1.2-strict.xsd --noout $(find Resources\/Private\/Language -name '*.xlf')",
 		"lint:xliff:installPrerequisites": "wget -q -O .Build\/xliff-core-1.2-strict.xsd https:\/\/docs.oasis-open.org\/xliff\/v1.2\/os\/xliff-core-1.2-strict.xsd",
