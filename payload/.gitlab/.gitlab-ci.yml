@@ -21,7 +21,7 @@ stages:
 
 
 default:
-  image: thecodingmachine/php:7.4-v4-cli-node16
+  image: thecodingmachine/php:7.4-v4-cli-node18
   cache:
     key: package-manager-cache
     paths:

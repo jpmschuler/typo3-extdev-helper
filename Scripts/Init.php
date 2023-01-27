@@ -79,9 +79,9 @@ declare(strict_types=1);
     exec('composer config extra.codequality.typo3-deprecations 2> /dev/null || composer config extra.codequality.typo3-deprecations 11');
     echo "done!" . PHP_EOL;
 
-    echo " => running pnpm up...";
+    echo " => running npm up...";
     exec('git rm --cached package-lock.json 2> /dev/null || true');
-    exec('pnpm up');
+    exec('npm up -W');
     echo "done!" . PHP_EOL;
 
     echo " => adding default folders if not existing..." . PHP_EOL;

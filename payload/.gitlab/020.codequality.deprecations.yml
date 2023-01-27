@@ -2,7 +2,7 @@ deprecations:rector:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
-  needs: ["bootstrap:composer-and-pnpm"]
+  needs: ["bootstrap:composer-and-npm"]
   stage: codequality
   allow_failure: true
   script:
@@ -18,7 +18,7 @@ deprecations:typo3scan:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
-  needs: ["bootstrap:composer-and-pnpm"]
+  needs: ["bootstrap:composer-and-npm"]
   stage: codequality
   allow_failure: true
   script:

@@ -7,8 +7,5 @@
   "repository": {
     "type": "git",
     "url": "git@gitlab.it-objects.de:typo3/extensions/typo3-extdev-helper.git"
-  },
-  "scripts": {
-    "preinstall": "npx only-allow pnpm"
   }
 }

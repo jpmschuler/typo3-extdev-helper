@@ -5,7 +5,7 @@ git:merge-release-with-develop:
   cache:
     policy: pull
   retry: 2
-  needs: ["bootstrap:composer-and-pnpm","git:semanticRelease-to-new-tag"]
+  needs: ["bootstrap:composer-and-npm","git:semanticRelease-to-new-tag"]
   before_script:
     - eval $(ssh-agent -s); echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null; mkdir -p ~/.ssh; chmod 700 ~/.ssh
     - echo -e "Host ${CI_SERVER_HOST}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
@@ -17,7 +17,6 @@ git:merge-release-with-develop:
     - export GIT_AUTHOR_EMAIL="${GITLAB_USER_EMAIL}"
     - export GIT_COMMITTER_NAME="${GITLAB_USER_NAME}"
     - export GIT_COMMITTER_EMAIL="${GITLAB_USER_EMAIL}"
-    - sudo npm install -g pnpm
   script:
     - git checkout release
     - git checkout develop
