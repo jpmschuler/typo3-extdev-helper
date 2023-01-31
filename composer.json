@@ -43,8 +43,5 @@
             "app-dir": ".Build",
             "web-dir": ".Build\/public"
         }
-    },
-    "scripts": {
-        "post-package-install": "composer run typo3-extdev-helper"
     }
 }
