@@ -16,7 +16,6 @@ stages:
 default:
   image:
     name: thecodingmachine/php:7.4-v4-slim-cli
-    pull_policy: if-not-present
   cache:
     key: package-manager-cache
     paths:
