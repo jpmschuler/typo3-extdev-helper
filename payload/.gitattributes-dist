@@ -20,3 +20,5 @@
 /rector.*.php export-ignore
 /README.md export-ignore
 /typoscript-lint.yml export-ignore
+/GitVersion.yml export-ignore
+

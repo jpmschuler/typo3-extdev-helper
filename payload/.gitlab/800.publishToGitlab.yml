@@ -1,8 +1,19 @@
-deploy:publishToGitlabRegistry:
+deploy:GitlabRelease:
+  stage: deploy
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
+  script:
+    - echo "running release_job"
+  release:                               # See https://docs.gitlab.com/ee/ci/yaml/#release for available properties
+    tag_name: '$CI_COMMIT_TAG'
+    description: '$CI_COMMIT_TAG_MESSAGE'
+
+deploy:GitlabComposerRegistry:
   image: curlimages/curl:latest
   stage: deploy
   rules:
-    - !reference [.rules_onlyversiontag, rules]
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
   variables:
     URL: "$CI_SERVER_PROTOCOL://$CI_SERVER_HOST:$CI_SERVER_PORT/api/v4/projects/$CI_PROJECT_ID/packages/composer?job_token=$CI_JOB_TOKEN"
   script:

@@ -16,7 +16,7 @@ lint:php-cs-fixer:
   rules:
     - !reference [.rules_default, rules]
   stage: codequality
-  needs: ["bootstrap:composer-and-npm"]
+  needs: ["bootstrap:composer"]
   script:
     - cat .php-cs-fixer.php
     - composer run lint:php-cs-fixer:dry-run
@@ -27,7 +27,7 @@ lint:phpcpd:
     - !reference [.rules_default, rules]
   stage: codequality
   allow_failure: true
-  needs: ["bootstrap:composer-and-npm"]
+  needs: ["bootstrap:composer"]
   script:
     - composer run lint:phpcpd
 
@@ -37,7 +37,7 @@ lint:phpcs:
     - !reference [.rules_default, rules]
   stage: codequality
   allow_failure: true
-  needs: ["bootstrap:composer-and-npm"]
+  needs: ["bootstrap:composer"]
   script:
     - composer run lint:phpcs:dry-run:ci
   artifacts:
@@ -52,7 +52,7 @@ lint:phpstan:
   cache: {}
   rules:
     - !reference [.rules_default, rules]
-  needs: ["bootstrap:composer-and-npm"]
+  needs: ["bootstrap:composer"]
   stage: codequality
   allow_failure: true
   script:
@@ -87,7 +87,7 @@ lint:xliff:
     - if: '$CI_COMMIT_BRANCH=~ /^breaking(.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
       changes:
         - Resources/Private/Language/**.xlf
-  needs: ["bootstrap:composer-and-npm"]
+  needs: ["bootstrap:composer"]
   stage: codequality
   allow_failure: true
   script:

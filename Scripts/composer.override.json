@@ -44,6 +44,7 @@
 			"@lint:phpcbf",
 			"@rector"
 		],
+		"develop:deploy": "[ -f ./.deploy.sh ] && ./.deploy.sh",
 		"git:precommit": [
 			"@lint:php-cs-fixer:dry-run",
 			"@lint:phpcs:dry-run",
