@@ -1,5 +1,5 @@
 {
-    "name": "jpmschuler/typo3-extdev-helper",
+    "name": "jpmschuler\/typo3-extdev-helper",
     "license": "MIT",
     "type": "project-configuration",
     "authors": [
@@ -9,58 +9,46 @@
         }
     ],
     "require": {
-        "bk2k/configuration-installer": "*@dev",
-        "camspiers/json-pretty": "^1.0",
-        "ergebnis/composer-normalize": "^2.15",
-        "friendsofphp/php-cs-fixer": "^v3.1.0",
-        "helmich/typo3-typoscript-lint": "^2.5",
-        "micheh/phpcs-gitlab": "^1.1.0",
-        "nimut/testing-framework": "^6",
-        "ssch/typo3-rector": "^1",
-        "saschaegerer/phpstan-typo3": "^1",
-        "sebastian/phpcpd": "^6.0.3",
-        "squizlabs/php_codesniffer": "^3.6",
-        "michielroos/typo3scan": "^1.7.3"
+        "bk2k\/configuration-installer": "dev-main",
+        "camspiers\/json-pretty": "^1.0",
+        "ergebnis\/composer-normalize": "^2.15",
+        "friendsofphp\/php-cs-fixer": "^v3.1.0",
+        "helmich\/typo3-typoscript-lint": "^2.5",
+        "micheh\/phpcs-gitlab": "^1.1.0",
+        "michielroos\/typo3scan": "^1.7.3",
+        "nimut\/testing-framework": "^6",
+        "saschaegerer\/phpstan-typo3": "^1",
+        "sebastian\/phpcpd": "^6.0.3",
+        "squizlabs\/php_codesniffer": "^3.6",
+        "ssch\/typo3-rector": "^1",
+        "typo3\/tailor": "^1.5"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest",
-        "typo3/cms-core": "^v10.5.32 || ^v11.4.16"
-    },
-    "config": {
-        "allow-plugins": {
-            "bk2k/configuration-installer": true,
-            "ergebnis/composer-normalize": true,
-            "typo3/class-alias-loader": true,
-            "typo3/cms-composer-installers": true
-        },
-        "sort-packages": true
-    },
-    "extra": {
-        "typo3/cms": {
-            "app-dir": ".Build",
-            "web-dir": ".Build/public"
-        }
+        "roave\/security-advisories": "dev-latest",
+        "typo3\/cms-core": "^v11.4.16"
     },
     "repositories": {
-        "b2k/configuration-installer": {
-            "url": "https://github.com/jpmschuler/configuration-installer.git",
+        "b2k\/configuration-installer": {
+            "url": "https:\/\/github.com\/jpmschuler\/configuration-installer.git",
             "type": "git",
             "canonical": true
         }
     },
-    "scripts": {
-        "release:major": [
-            "npm version major -m '[RELEASE] releasing v%s'",
-            "@release:publish"
-        ],
-        "release:minor": [
-            "npm version minor -m '[RELEASE] releasing v%s'",
-            "@release:publish"
-        ],
-        "release:patch": [
-            "npm version patch -m '[RELEASE] releasing v%s'",
-            "@release:publish"
-        ],
-        "release:publish": "git push --follow-tags"
+    "config": {
+        "allow-plugins": {
+            "bk2k\/configuration-installer": true,
+            "ergebnis\/composer-normalize": true,
+            "typo3\/class-alias-loader": true,
+            "typo3\/cms-composer-installers": true
+        },
+        "bin-dir": ".Build\/bin",
+        "sort-packages": true,
+        "vendor-dir": ".Build\/vendor"
+    },
+    "extra": {
+        "typo3\/cms": {
+            "app-dir": ".Build",
+            "web-dir": ".Build\/public"
+        }
     }
 }
