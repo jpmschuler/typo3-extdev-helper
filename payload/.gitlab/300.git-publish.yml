@@ -66,8 +66,6 @@ git:publish:
     - export GIT_COMMITTER_NAME="${GITLAB_USER_NAME}"
     - export GIT_COMMITTER_EMAIL="${GITLAB_USER_EMAIL}"
   script:
-    - pwd; ls
-    - git remote -v
     - git checkout ${CI_COMMIT_BRANCH}
     - export GIT_LASTTAG="$(git describe --tags --abbrev=0)"
     - export CHANGELOG="$(git log ${GIT_LASTTAG}...HEAD --abbrev=0 --format="%s%n%b")"
