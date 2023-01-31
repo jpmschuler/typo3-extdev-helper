@@ -7,11 +7,7 @@
 		"payload/.gitlab/040.test.prebuild.yml": ".gitlab/040.test.prebuild.yml",
 		"payload/.gitlab/300.git-publish.yml": ".gitlab/300.git-publish.yml",
 		"payload/.gitlab/800.publishToGitlab.yml": ".gitlab/800.publishToGitlab.yml",
-		"payload/.gitlab/900.notify.yml": ".gitlab/900.notify.yml",
-		"payload/.gitlab/100.merge-develop-in-release.yml": ".gitlab/100.merge-develop-in-release.yml",
-		"payload/.gitlab/200.semanticRelease-to-new-tag.yml": ".gitlab/200.semanticRelease-to-new-tag.yml",
-		"payload/.gitlab/500.merge-release-with-develop.yml": ".gitlab/500.merge-release-with-develop.yml",
-		"payload/.gitlab/800.publishToGitlabRegistry.yml": ".gitlab/800.publishToGitlabRegistry.yml",
+		"payload/.gitlab/900.notify.yml": ".gitlab/900.notify.yml"
 		"payload/.editorconfig": ".editorconfig",
 		"payload/.gitattributes-dist": ".gitattributes",
 		"payload/.gitlab-ci.yml": ".gitlab-ci.yml",
