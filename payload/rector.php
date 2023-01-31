@@ -33,13 +33,9 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/**/Resources/**/BowerComponents/*',
         __DIR__ . '/**/Resources/**/bower_components/*',
         __DIR__ . '/**/Resources/**/build/*',
-        __DIR__ . '/vendor/*',
-        __DIR__ . '/Build/*',
-        __DIR__ . '/public/*',
-        __DIR__ . '/.github/*',
-        __DIR__ . '/.Build/*',
-        __DIR__ . '/.Build/*',
-        __DIR__ . '/node_modules/*',
+        __DIR__ . '/.gitlab',
+        __DIR__ . '/.github',
+        __DIR__ . '/.Build'
     ]);
 
     $rectorConfig->rule(ConvertImplicitVariablesToExplicitGlobalsRector::class);
