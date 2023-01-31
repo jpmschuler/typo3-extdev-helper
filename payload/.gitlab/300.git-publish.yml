@@ -7,7 +7,7 @@ git:getNextVersion:
     entrypoint: [""]
   stage: .pre
   variables:
-    GIT_STRATEGY: fetch
+    GIT_STRATEGY: clone
     GIT_DEPTH: 0 # force a deep/non-shallow fetch need by gitversion
   cache: [] # caches and before / after scripts can mess things up
   before_script: []
