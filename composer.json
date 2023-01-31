@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "bk2k\/configuration-installer": "dev-main",
+        "bk2k\/configuration-installer": "dev-master",
         "camspiers\/json-pretty": "^1.0",
         "ergebnis\/composer-normalize": "^2.15",
         "friendsofphp\/php-cs-fixer": "^v3.1.0",
@@ -26,13 +26,6 @@
     "require-dev": {
         "roave\/security-advisories": "dev-latest",
         "typo3\/cms-core": "^v11.4.16"
-    },
-    "repositories": {
-        "b2k\/configuration-installer": {
-            "url": "https:\/\/github.com\/jpmschuler\/configuration-installer.git",
-            "type": "git",
-            "canonical": true
-        }
     },
     "config": {
         "allow-plugins": {

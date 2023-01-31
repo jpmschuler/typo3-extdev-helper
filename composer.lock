@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5bd0c2a3df5806f747b0153981a2a7d",
+    "content-hash": "2a2ce34aa8c4a0a1fe8cc8908d6c30db",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -62,14 +62,21 @@
         },
         {
             "name": "bk2k/configuration-installer",
-            "version": "dev-main",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jpmschuler/configuration-installer.git",
-                "reference": "0e75188815b44773451dcc6e50e693bc916b6c11"
+                "url": "https://github.com/benjaminkott/configuration-installer.git",
+                "reference": "5ff80ac96f8efa6d652cf936ba2000823a12c559"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/benjaminkott/configuration-installer/zipball/5ff80ac96f8efa6d652cf936ba2000823a12c559",
+                "reference": "5ff80ac96f8efa6d652cf936ba2000823a12c559",
+                "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.1 || ^2.0"
+                "composer-plugin-api": "^1.1 || ^2.0",
+                "php": "^7.3"
             },
             "require-dev": {
                 "composer/composer": "^1.10 || ^2.0@dev",
@@ -87,35 +94,7 @@
                     "BK2K\\ConfigurationInstaller\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "BK2K\\ConfigurationInstallerTest\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test:php:lint": [
-                    "phplint"
-                ],
-                "test:php:unit": [
-                    "Composer\\Config::disableProcessTimeout",
-                    "phpunit"
-                ],
-                "test:php:cover": [
-                    "Composer\\Config::disableProcessTimeout",
-                    "phpunit --coverage-html build/coverage-report"
-                ],
-                "test": [
-                    "@cgl",
-                    "@test:php:lint",
-                    "@test:php:unit"
-                ],
-                "cgl:fix": [
-                    "php-cs-fixer fix"
-                ],
-                "cgl": [
-                    "php-cs-fixer fix --dry-run"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -123,16 +102,17 @@
                 {
                     "name": "Benjamin Kott",
                     "email": "info@bk2k.info",
-                    "role": "Developer",
-                    "homepage": "http://www.bk2k.info/"
+                    "homepage": "http://www.bk2k.info/",
+                    "role": "Developer"
                 }
             ],
             "description": "Configuration Installer",
             "homepage": "https://github.com/benjaminkott/configuration-installer",
             "support": {
-                "issues": "https://github.com/benjaminkott/configuration-installer/issues"
+                "issues": "https://github.com/benjaminkott/configuration-installer/issues",
+                "source": "https://github.com/benjaminkott/configuration-installer/tree/master"
             },
-            "time": "2022-11-15T23:58:52+00:00"
+            "time": "2020-07-31T07:25:16+00:00"
         },
         {
             "name": "bnf/phpstan-psr-container",
