@@ -53,29 +53,20 @@ declare(strict_types=1);
     echo " => adding overrides to composer.json...";
     mergeJson('composer');
     echo "done!" . PHP_EOL;
-    echo " => cleaning composer.json...";
-    exec('.Build/bin/rector process composer.json || true');
+    echo " => overriding composer.json..." . PHP_EOL;
+    exec('composer config --unset version');
+    exec('composer config extra.typo3/cms.app-dir .Build');
+    exec('composer config extra.typo3/cms.web-dir .Build/public');
+    exec('composer config sort-packages true');
+    exec('composer config bin-dir .Build/bin');
+    exec('composer config vendor-dir .Build/vendor');
     echo "done!" . PHP_EOL;
-    echo " => removing old codequality config from git cache if existing..." . PHP_EOL;
-    exec('git rm --cached .php-cs 2> /dev/null || true');
-    exec('git rm --cached .php-cs.xml 2> /dev/null || true');
-    exec('git rm --cached .phpstan.constants.php 2> /dev/null || true');
-    exec('git rm --cached .php-cs-fixer.php 2> /dev/null || true');
-    exec('git rm --cached .gitlab-ci-codequality.yml 2> /dev/null || true');
-    exec('git rm --cached phpstan.neon 2> /dev/null || true');
-    exec('git rm --cached rector.php 2> /dev/null || true');
-    exec('git rm --cached typoscript-lint.yml 2> /dev/null || true');
-    exec('git rm --cached package-lock.json 2> /dev/null || true');
-    exec('git rm --cached package.json 2> /dev/null || true');
-    exec('git rm -rf --cached .cache 2> /dev/null || true');
-    echo "done!" . PHP_EOL;
-    echo " => running composer up..." . PHP_EOL;
-    exec('composer up -W && composer normalize && composer config');
-    echo "done!" . PHP_EOL;
-
     echo " => setting default codequality settings..." . PHP_EOL;
     exec('composer config extra.codequality.phpstan-level 2> /dev/null || composer config extra.codequality.phpstan-level 5');
     exec('composer config extra.codequality.typo3-deprecations 2> /dev/null || composer config extra.codequality.typo3-deprecations 11');
+    echo "done!" . PHP_EOL;
+    echo " => cleaning composer.json...";
+    exec('.Build/bin/rector process composer.json || true');
     echo "done!" . PHP_EOL;
 
     echo " => adding default folders if not existing..." . PHP_EOL;
@@ -98,6 +89,10 @@ declare(strict_types=1);
         }
         touch('./Tests/Unit/.keep');
     }
-    echo "everything done!" . PHP_EOL;
+    echo "done!" . PHP_EOL;
+    echo " => running composer up..." . PHP_EOL;
+    exec('composer up -W && composer normalize && composer config');
+    echo "done!" . PHP_EOL;
+
 
 })();

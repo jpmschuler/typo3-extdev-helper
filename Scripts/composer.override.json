@@ -1,37 +1,4 @@
 {
-	"require": {
-		"bk2k\/configuration-installer": null,
-		"camspiers\/json-pretty": null,
-		"ergebnis\/composer-normalize": null,
-		"friendsofphp\/php-cs-fixer": null,
-		"helmich\/typo3-typoscript-lint": null,
-		"michielroos\/typo3scan": null,
-		"nimut\/testing-framework": null,
-		"rector\/rector": null,
-		"squizlabs\/php_codesniffer": null
-	},
-	"require-dev": {
-		"bk2k\/configuration-installer": null,
-		"camspiers\/json-pretty": null,
-		"ergebnis\/composer-normalize": null,
-		"friendsofphp\/php-cs-fixer": null,
-		"helmich\/typo3-typoscript-lint": null,
-		"michielroos\/typo3scan": null,
-		"nimut\/testing-framework": null,
-		"rector\/rector": null,
-		"squizlabs\/php_codesniffer": null
-	},
-	"config": {
-		"bin-dir": ".Build\/bin",
-		"sort-packages": true,
-		"vendor-dir": ".Build\/vendor"
-	},
-	"extra": {
-		"typo3\/cms": {
-			"app-dir": ".Build",
-			"web-dir": ".Build\/public"
-		}
-	},
 	"scripts": {
 		"codequality": [
 			"@lint:php-cs-fixer",
