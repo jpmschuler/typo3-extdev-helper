@@ -29,7 +29,6 @@ declare(strict_types=1);
 
     function mergeJson($jsonName): bool
     {
-        $jsonPretty = new \Camspiers\JsonPretty\JsonPretty;
         $extensionComposerPath = './' . $jsonName . '.json';
         $extensionComposer = json_decode(file_get_contents($extensionComposerPath), true);
         if (!is_array($extensionComposer)) {
@@ -43,7 +42,7 @@ declare(strict_types=1);
         $resultComposer = array_replace_recursive($extensionComposer, $overrideComposer);
         recursive_unset_value($resultComposer, null);
 
-        $result = $jsonPretty->prettify($resultComposer);
+        $result = json_encode($resultComposer);
         file_put_contents($extensionComposerPath, $result);
         return true;
     }
