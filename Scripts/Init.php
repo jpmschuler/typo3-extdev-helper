@@ -42,7 +42,7 @@ declare(strict_types=1);
         $resultComposer = array_replace_recursive($extensionComposer, $overrideComposer);
         recursive_unset_value($resultComposer, null);
 
-        $result = json_encode($resultComposer, JSON_UNESCAPED_SLASHES);
+        $result = json_encode($resultComposer, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
         file_put_contents($extensionComposerPath, $result);
         return true;
     }
