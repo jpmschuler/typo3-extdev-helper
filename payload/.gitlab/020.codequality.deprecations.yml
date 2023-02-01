@@ -1,4 +1,6 @@
 deprecations:rector:
+  image:
+    name: thecodingmachine/php:7.4-v4-cli
   cache: {}
   rules:
     - !reference [.rules_default, rules]
