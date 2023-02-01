@@ -42,7 +42,7 @@ declare(strict_types=1);
         $resultComposer = array_replace_recursive($extensionComposer, $overrideComposer);
         recursive_unset_value($resultComposer, null);
 
-        $result = json_encode($resultComposer);
+        $result = json_encode($resultComposer, JSON_UNESCAPED_SLASHES);
         file_put_contents($extensionComposerPath, $result);
         return true;
     }
@@ -56,8 +56,8 @@ declare(strict_types=1);
     exec('composer config --unset version');
     exec('composer config bin-dir .Build/bin');
     exec('composer config vendor-dir .Build/vendor');
-    exec('composer config extra.typo3\\/cms.app-dir .Build');
-    exec('composer config extra.typo3\\/cms.web-dir .Build/public');
+    exec('composer config extra.typo3/cms.app-dir .Build');
+    exec('composer config extra.typo3/cms.web-dir .Build/public');
     exec('composer config sort-packages true');
     echo "done!" . PHP_EOL;
     echo " => setting default codequality settings..." . PHP_EOL;
