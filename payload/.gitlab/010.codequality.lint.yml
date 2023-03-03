@@ -66,6 +66,8 @@ lint:phpstan:
       codequality: "report.*"
 
 lint:xliff:
+  tags:
+    - access-to-www
   image: pipelinecomponents/xmllint:latest
   cache: {}
   rules:
