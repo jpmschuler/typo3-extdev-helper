@@ -9,7 +9,6 @@ git:getNextVersion:
   variables:
     GIT_STRATEGY: clone
     GIT_DEPTH: 0 # force a deep/non-shallow fetch need by gitversion
-    TYPO3_DISABLE_DOCS_VERSION_UPDATE: 1
   cache: [] # caches and before / after scripts can mess things up
   before_script: []
   after_script: []
@@ -50,6 +49,7 @@ git:publish:
   variables:
     GIT_STRATEGY: clone
     GIT_DEPTH: 0 # force a deep/non-shallow fetch need by gitversion
+    TYPO3_DISABLE_DOCS_VERSION_UPDATE: 1
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop" && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
   stage: deploy
