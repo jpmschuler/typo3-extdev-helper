@@ -1,11 +1,7 @@
 name: Testing and SemVer-Releasing stable versions as tags
 on:
   workflow_call:
-  push:
-    branches:
-      - main
-      - develop
-  pull_request:
+
 jobs:
   php-lint:
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, '[RELEASE]')"
