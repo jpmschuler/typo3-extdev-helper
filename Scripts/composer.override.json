@@ -93,6 +93,10 @@
 		"typo3-extdev-helper-init": [
 			"@php .Build/vendor/jpmschuler/typo3-extdev-helper/Scripts/Init.php"
 		],
+		"version:set": [
+			"@putenv TYPO3_DISABLE_DOCS_VERSION_UPDATE=1",
+			"@version:set:ext_emconf.php"
+		],
 		"version:set:ext_emconf.php": "tailor set-version"
 	}
 }

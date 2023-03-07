@@ -1,7 +1,7 @@
 git:getNextVersion:
   needs: []
   rules:
-    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
+    - if: '($CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH == "main") && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
   image:
     name: gittools/gitversion
     entrypoint: [""]
@@ -49,9 +49,8 @@ git:publish:
   variables:
     GIT_STRATEGY: clone
     GIT_DEPTH: 0 # force a deep/non-shallow fetch need by gitversion
-    TYPO3_DISABLE_DOCS_VERSION_UPDATE: 1
   rules:
-    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
+    - if: '($CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH == "main") $CI_COMMIT_MESSAGE !~ /^\[RELEASE\](.?)*/ && $CI_COMMIT_MESSAGE !~ /^\[TASK\] Set version (.?)*/'
   stage: deploy
   before_script:
     - eval $(ssh-agent -s); echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null; mkdir -p ~/.ssh; chmod 700 ~/.ssh
@@ -68,8 +67,8 @@ git:publish:
     - git checkout ${CI_COMMIT_BRANCH}
     - export GIT_LASTTAG="$(git describe --tags --abbrev=0)"
     - export CHANGELOG="$(git log ${GIT_LASTTAG}...HEAD --abbrev=0 --format="%s%n%b")"
-    - composer run version:set:ext_emconf.php $GitVersion_MajorMinorPatch
-    - git commit ext_emconf.php -m "[TASK] Set version of ext_emconf.php to ${GitVersion_MajorMinorPatch} for release"
+    - composer run version:set $GitVersion_MajorMinorPatch
+    - git commit ext_emconf.php -m "[RELEASE] Releasing v${GitVersion_MajorMinorPatch}"
     - git tag v${GitVersion_MajorMinorPatch} -m "[RELEASE] Releasing v${GitVersion_MajorMinorPatch}" -m "" -m "Changes since last release:" -m "${CHANGELOG}"
     - git checkout ${GIT_RELEASE_BRANCH:=release}
     - git merge v${GitVersion_MajorMinorPatch}
