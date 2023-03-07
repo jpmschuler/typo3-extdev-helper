@@ -8,6 +8,7 @@
 		"payload/.gitlab/300.git-publish.yml": ".gitlab/300.git-publish.yml",
 		"payload/.gitlab/800.publishToGitlab.yml": ".gitlab/800.publishToGitlab.yml",
 		"payload/.gitlab/900.notify.yml": ".gitlab/900.notify.yml",
+		"payload/.github/workflows/ci.yml": ".github/workflows/ci.yml",
 		"payload/.editorconfig": ".editorconfig",
 		"payload/.gitattributes-dist": ".gitattributes",
 		"payload/.gitlab-ci.yml": ".gitlab-ci.yml",
@@ -20,6 +21,8 @@
 		"payload/typoscript-lint.yml": "typoscript-lint.yml"
 	},
 	"gitignore": [
+		"/.Build/",
+		"/.idea/",
 		"/.deploy.sh",
 		"/.editorconfig",
 		"/.php_cs.php",
