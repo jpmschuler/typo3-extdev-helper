@@ -26,7 +26,7 @@ jobs:
           - 7.4
           - 8.0
           - 8.1
-  code-quality:
+  php-codequality:
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, '[RELEASE]')"
     name: "Code quality checks"
     runs-on: ubuntu-20.04
@@ -99,7 +99,7 @@ jobs:
   git-publish:
     name: "tag new release and push to release branch"
     runs-on: ubuntu-20.04
-    needs: [php-lint,xliff-lint,codequality,calculate-version]
+    needs: [php-lint,xliff-lint,php-codequality,calculate-version]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
