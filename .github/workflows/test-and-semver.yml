@@ -17,7 +17,7 @@ jobs:
           coverage: none
           tools: composer:v2.3
       - name: "Run PHP lint"
-        run: "composer check:php"
+        run: "composer lint:php"
     strategy:
       fail-fast: false
       matrix:
@@ -38,7 +38,7 @@ jobs:
         with:
           php-version: "${{ matrix.php-version }}"
           coverage: none
-          tools: composer:v2.3
+          tools: composer:v2.4
       - name: "Show Composer version"
         run: composer --version
       - name: "Cache dependencies installed with composer"
@@ -56,11 +56,20 @@ jobs:
       matrix:
         command:
           - "normalize"
-          - "check:php-cs-fixer:dry-run"
-          - "check:phpcs:dry-run"
-          - "check:phpstan"
+          - "lint:php-cs-fixer:dry-run"
+          - "lint:phpcs:dry-run"
+          - "lint:phpstan:ci"
+          - "lint:phpcpd"
         php-version:
           - 7.4
+  xliff-lint:
+    name: "Xliff linter"
+    runs-on: ubuntu-22.04
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - name: "Run the xliff lint"
+        uses: TYPO3-Continuous-Integration/TYPO3-CI-Xliff-Lint@v1
 
   calculate-version:
     name: "calculating next SemVer"
@@ -90,7 +99,7 @@ jobs:
   git-publish:
     name: "tag new release and push to release branch"
     runs-on: ubuntu-20.04
-    needs: [calculate-version]
+    needs: [php-lint,xliff-lint,codequality,calculate-version]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
