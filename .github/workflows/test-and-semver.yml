@@ -1,0 +1,113 @@
+name: Testing and SemVer-Releasing stable versions as tags
+on:
+  workflow_call:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+jobs:
+  php-lint:
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, '[RELEASE]')"
+    name: "PHP linter"
+    runs-on: ubuntu-20.04
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "${{ matrix.php-version }}"
+          coverage: none
+          tools: composer:v2.3
+      - name: "Run PHP lint"
+        run: "composer check:php"
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - 7.3
+          - 7.4
+          - 8.0
+          - 8.1
+  code-quality:
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, '[RELEASE]')"
+    name: "Code quality checks"
+    runs-on: ubuntu-20.04
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "${{ matrix.php-version }}"
+          coverage: none
+          tools: composer:v2.3
+      - name: "Show Composer version"
+        run: composer --version
+      - name: "Cache dependencies installed with composer"
+        uses: actions/cache@v3
+        with:
+          key: "php${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.json') }}"
+          path: ~/.cache/composer
+          restore-keys: "php${{ matrix.php-version }}-composer-\n"
+      - name: "Install Composer dependencies"
+        run: "composer install --no-progress"
+      - name: "Run command"
+        run: "composer ${{ matrix.command }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        command:
+          - "normalize"
+          - "check:php-cs-fixer:dry-run"
+          - "check:phpcs:dry-run"
+          - "check:phpstan"
+        php-version:
+          - 7.4
+
+  calculate-version:
+    name: "calculating next SemVer"
+    runs-on: ubuntu-20.04
+    outputs:
+      majorMinorPatch: ${{ steps.gitversion.outputs.majorMinorPatch }} # To use an output in another job, you have to map it to a job output.
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Determine Version
+        id:   gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.7
+        with:
+          useConfigFile: true
+      - name: Display GitVersion outputs
+        run: |
+          echo "LegacySemVer: ${{ steps.gitversion.outputs.legacySemVer }}"
+          echo "SemVer: ${{ steps.gitversion.outputs.semVer }}"
+          echo "FullSemVer: ${{ steps.gitversion.outputs.FullSemVer }}"
+          echo "Major: ${{ steps.gitversion.outputs.major }}"
+          echo "Minor: ${{ steps.gitversion.outputs.minor }}"
+          echo "Patch: ${{ steps.gitversion.outputs.patch }}"
+          echo "MajorMinorPatch: ${{ steps.gitversion.outputs.majorMinorPatch }}"
+
+  git-publish:
+    name: "tag new release and push to release branch"
+    runs-on: ubuntu-20.04
+    needs: [getNextVersion]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Publish
+        run: |
+          git checkout ${CI_COMMIT_BRANCH}
+          export GIT_LASTTAG="$(git describe --tags --abbrev=0)"
+          export CHANGELOG="$(git log ${GIT_LASTTAG}...HEAD --abbrev=0 --format="%s%n%b")"
+          composer run version:set ${{ needs.calculate-version.outputs.majorMinorPatch }}
+          git commit ext_emconf.php -m "[RELEASE] Releasing v${{ needs.calculate-version.outputs.majorMinorPatch }}"
+          git tag v${GitVersion_MajorMinorPatch} -m "[RELEASE] Releasing v${{ needs.calculate-version.outputs.majorMinorPatch }}" -m "" -m "Changes since last release:" -m "${CHANGELOG}"
+          git checkout ${GIT_RELEASE_BRANCH:=release}
+          git merge v${{ needs.calculate-version.outputs.majorMinorPatch }}
+          git push --all --follow-tags
