@@ -44,5 +44,8 @@
             "app-dir": ".Build",
             "web-dir": ".Build\/public"
         }
+    },
+    "scripts": {
+        "release:patch": "git tag v$(gitversion /output json /showvariable MajorMinorPatch) -m 'v$(gitversion /output json /showvariable MajorMinorPatch)'"
     }
 }
