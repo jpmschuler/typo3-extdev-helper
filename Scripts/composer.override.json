@@ -13,7 +13,7 @@
 		],
 		"develop": [
 			"Composer\\Config::disableProcessTimeout",
-			".Build/bin/php-watcher foo --exec 'composer run develop:deploy' --ignore .Build --ext=php,yaml,html,txt,typoscript,css,js"
+			".Build/bin/php-watcher foo --exec 'composer run develop:deploy' --ignore .Build --ext=php,yaml,html,txt,typoscript,css,js,xlf"
 		],
 		"develop:deploy": "[ -f ./.deploy.sh ] && ./.deploy.sh",
 		"git:precommit": [
