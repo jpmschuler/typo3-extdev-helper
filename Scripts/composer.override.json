@@ -11,6 +11,10 @@
 			"@lint:phpcbf",
 			"@rector"
 		],
+		"develop": [
+			"Composer\\Config::disableProcessTimeout",
+			".Build/bin/php-watcher foo --exec 'composer run develop:deploy' --ignore .Build --ext=php,yaml,html,txt,typoscript,css,js"
+		],
 		"develop:deploy": "[ -f ./.deploy.sh ] && ./.deploy.sh",
 		"git:precommit": [
 			"echo 'running precommit checks...'",
