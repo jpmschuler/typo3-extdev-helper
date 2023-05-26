@@ -42,9 +42,6 @@
         "vendor-dir": ".Build\/vendor"
     },
     "extra": {
-            "branch-alias": {
-                "feature-php81-dev": "5.x-dev"
-            },
         "typo3\/cms": {
             "app-dir": ".Build",
             "web-dir": ".Build\/public"
