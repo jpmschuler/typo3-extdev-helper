@@ -9,18 +9,18 @@
         }
     ],
     "require": {
-        "ergebnis\/composer-norgimalize": "^2.15",
-        "friendsofphp\/php-cs-fixer": "^v3.1.0",
-        "helmich\/typo3-typoscript-lint": "^2.5",
+        "ergebnis\/composer-normalize": "^2.28.3",
+        "friendsofphp\/php-cs-fixer": "^v3.14.1",
+        "helmich\/typo3-typoscript-lint": "^2.5.2",
         "micheh\/phpcs-gitlab": "^1.1.0",
-        "michielroos\/typo3scan": "^1.7.3",
-        "nimut\/testing-framework": "^6",
-        "saschaegerer\/phpstan-typo3": "^1",
+        "michielroos\/typo3scan": "^1.7.7",
+        "nimut\/testing-framework": "^6.0.1",
+        "saschaegerer\/phpstan-typo3": "^1.8.5",
         "sebastian\/phpcpd": "^6.0.3",
-        "seregazhuk/php-watcher": "^0.5.2",
-        "squizlabs\/php_codesniffer": "^3.6",
-        "ssch\/typo3-rector": "^1",
-        "typo3\/tailor": "^1.5",
+        "funct-gmbh/php-watcher": "^v1.0.1",
+        "squizlabs\/php_codesniffer": "^3.7.2",
+        "ssch\/typo3-rector": "^1.2.2",
+        "typo3\/tailor": "^1.5.0",
         "ext-json": "*"
     },
     "require-dev": {
@@ -49,11 +49,5 @@
     },
     "scripts": {
         "release:patch": "git tag v$(gitversion /output json /showvariable MajorMinorPatch) -m 'v$(gitversion /output json /showvariable MajorMinorPatch)'"
-    },
-    "repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/daggerhart/my-custom-library.git"
     }
-]
 }
