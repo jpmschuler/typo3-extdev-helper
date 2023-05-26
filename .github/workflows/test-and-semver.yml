@@ -77,7 +77,7 @@ jobs:
       majorMinorPatch: ${{ steps.gitversion.outputs.majorMinorPatch }} # To use an output in another job, you have to map it to a job output.
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Install GitVersion
@@ -105,9 +105,13 @@ jobs:
     needs: [php-lint,xliff-lint,php-codequality,calculate-version]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
       - name: Publish
         run: |
           git checkout ${CI_COMMIT_BRANCH}
