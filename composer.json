@@ -9,8 +9,7 @@
         }
     ],
     "require": {
-        "bk2k\/configuration-installer": "*@dev",
-        "ergebnis\/composer-normalize": "^2.15",
+        "ergebnis\/composer-norgimalize": "^2.15",
         "friendsofphp\/php-cs-fixer": "^v3.1.0",
         "helmich\/typo3-typoscript-lint": "^2.5",
         "micheh\/phpcs-gitlab": "^1.1.0",
@@ -28,6 +27,9 @@
         "roave\/security-advisories": "dev-latest",
         "typo3\/cms-core": "^v11.4.16"
     },
+    "suggest": {
+        "bk2k\/configuration-installer": "*@dev"
+    },
     "config": {
         "allow-plugins": {
             "bk2k\/configuration-installer": true,
@@ -40,6 +42,9 @@
         "vendor-dir": ".Build\/vendor"
     },
     "extra": {
+            "branch-alias": {
+                "feature-php81-dev": "5.x-dev"
+            },
         "typo3\/cms": {
             "app-dir": ".Build",
             "web-dir": ".Build\/public"
@@ -47,5 +52,11 @@
     },
     "scripts": {
         "release:patch": "git tag v$(gitversion /output json /showvariable MajorMinorPatch) -m 'v$(gitversion /output json /showvariable MajorMinorPatch)'"
+    },
+    "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/daggerhart/my-custom-library.git"
     }
+]
 }
