@@ -43,7 +43,7 @@
     },
     "extra": {
             "branch-alias": {
-                "5.x-dev": "feature-php81-dev"
+                "feature-php81-dev": "5.x-dev"
             },
         "typo3\/cms": {
             "app-dir": ".Build",
